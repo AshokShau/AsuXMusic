@@ -16,6 +16,11 @@
       "required": true,
       "value": "-100........"
     },
+    "OWNER_ID": {
+      "description": "ʏᴏᴜʀ ᴛɢ ɪᴅ",
+      "required": true,
+      "value": "........"
+    },
     "MONGO_DB_URI": {
       "description": "ᴀ ᴍᴏɴɢᴏᴅʙ ᴄʟᴏᴜᴅ ᴅᴀᴛᴀʙᴀsᴇ ᴜʀʟ ғʀᴏᴍ cloud.mongodb.com",
       "value": "mongodb+srv://EXONTESTMONGO:EXONTESTMONGO@cluster0.bviw7ic.mongodb.net/?retryWrites=true&w=majority",
