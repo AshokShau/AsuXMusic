@@ -1,2 +1,3 @@
-#web: bash AsuX
-worker: bash AsuX
+web: python -m http.server $PORT 
+worker: python3 -m AsuXMusic
+
