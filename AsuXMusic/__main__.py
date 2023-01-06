@@ -122,7 +122,7 @@ home_text_pm = f"""**ʜᴇʏ ,
 **ᴀ ғᴀsᴛ ᴀɴᴅ ᴩᴏᴡᴇʀғᴜʟ ᴍᴜsɪᴄ ᴩʟᴀʏᴇʀ ʙᴏᴛ ғᴏʀ ᴛᴇʟᴇɢʀᴀᴍ ɢʀᴏᴜᴩ ᴠɪᴅᴇᴏᴄʜᴀᴛs.**
 
 ━━━━━━━━━━━━━━━━━━━━━
-||ᴄʟɪᴄᴋ ᴏɴ ʜᴇʟᴩ ʙᴜᴛᴛᴏɴ ᴛᴏ ɢᴇᴛ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴍʏ ᴄᴏᴍᴍᴀɴᴅs. ||"""
+||ᴄʟɪᴄᴋ ᴏɴ /help ʙᴜᴛᴛᴏɴ ᴛᴏ ɢᴇᴛ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴍʏ ᴄᴜʀsᴇᴅ ᴄᴏᴍᴍᴀɴᴅs. ||"""
 
 
 @app.on_message(filters.command("start") & filters.private)
@@ -204,7 +204,7 @@ async def start_command(_, message):
                     text="❄ ʜᴇʟᴩ ❄", callback_data="AsuX_help"
                 ),
                 InlineKeyboardButton(
-                    text="🥀 ᴏᴡɴᴇʀ 🥀", user_id=F_OWNER
+                    text="😈 Master 👿", user_id=F_OWNER
                 )
             ],
             [
@@ -214,11 +214,6 @@ async def start_command(_, message):
                 InlineKeyboardButton(
                     text="💘 ᴄʜᴀɴɴᴇʟ 💘", url=config.SUPPORT_CHANNEL
                 ),
-            ],
-            [
-                InlineKeyboardButton(
-                    text="☁ sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ ☁", url="https://github.com/Abishnoi69/AsuXMusic"
-                )
             ],
         ]
     ),
@@ -252,11 +247,6 @@ async def AsuX_home(_, CallbackQuery):
                 InlineKeyboardButton(
                     text="💘 ᴄʜᴀɴɴᴇʟ 💘", url=config.SUPPORT_CHANNEL
                 ),
-            ],
-            [
-                InlineKeyboardButton(
-                    text="☁ sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ ☁", url="https://github.com/Abishnoi69/AsuXMusic"
-                )
             ],
         ]
     ),
