@@ -1,6 +1,6 @@
 {
   "name": "ᴀsᴜx ᴍᴜsɪᴄ",
-  "logo": "https://telegra.ph/file/89cbc8b8760b6abff430f.jpg",
+  "logo": "https://te.legra.ph/file/89cbc8b8760b6abff430f.jpg",
   "description": "A Fast & Powerful VC Player bot to play songs in Telegram Video Chat written in Python with the help of Pyrogram & PyTg-Calls.",
   "keywords": ["music", "voicechat", "python", "telegram-bot", "pyrogram", "telegram", "AsuX"],
   "repository": "https://github.com/Abishnoi69/AsuXMusic",
