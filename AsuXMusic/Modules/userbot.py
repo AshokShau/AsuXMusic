@@ -4,7 +4,7 @@ from pyrogram.errors import UserAlreadyParticipant
 from AsuX import authorized_users_only, errors
 from AsuX.filters import command
 from AsuXMusic import bot as Abishnoi
-from AsuXMusic import user as USER
+from AsuXMusic import user as USER, BOT_USERNAME
 
 
 @Abishnoi.on_message(
