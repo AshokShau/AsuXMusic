@@ -1,5 +1,6 @@
 # abishnoi 
 from .admins import *
+from .inline import *
 from .chatname import *
 from .converter import *
 from .thumbnail import *
