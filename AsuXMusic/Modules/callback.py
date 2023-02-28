@@ -1,7 +1,8 @@
 import yt_dlp
 from AsuX.queues import QUEUE
-from pyrogram import Client, filters
+from pyrogram import filters
 from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
+from AsuXMusic import bot as Client
 from AsuXMusic import ASSISTANT_USERNAME, BOT_NAME, BOT_USERNAME, OWNER_NAME
 from AsuXMusic.config import (
     GROUP_SUPPORT,
