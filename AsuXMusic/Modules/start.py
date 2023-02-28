@@ -1,6 +1,6 @@
 from pyrogram import filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-from AsuXMusic inport BOT_NAME, BOT_USERNAME, OWNER_NAME, ASSISTANT_USERNAME, bot as Abishnoi
+from AsuXMusic import BOT_NAME, BOT_USERNAME, OWNER_NAME, ASSISTANT_USERNAME, bot as Abishnoi
 from AsuXMusic.config import (
     GROUP_SUPPORT,
     UPDATES_CHANNEL,
