@@ -24,6 +24,12 @@ user = PyTgCalls(Abishnoi,
 call_py = PyTgCalls(Abishnoi, overload_quiet_mode=True)
 
 with Client("AsuXMusic", API_ID, API_HASH, bot_token=BOT_TOKEN) as app:
-    me_bot = app.get_me()
-with Abishnoi as app:
-    me_Abishnoi = app.get_me()
+    x = app.get_me()
+    BOT_ID = x.id
+    BOT_NAME = x.first_name + (x.last_name or "")
+    BOT_USERNAME = x.username
+    BOT_MENTION = x.mention
+    BOT_DC_ID = x.dc_id
+with Abishnoi as ass:
+    getass = ass.get_me()
+    ASSISTANT_USERNAME = getass.username
