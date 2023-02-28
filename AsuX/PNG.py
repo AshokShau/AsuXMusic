@@ -3,7 +3,7 @@ import aiohttp
 from AsuX import convert
 import ffmpeg
 import requests
-from Process.fonts import CHAT_TITLE
+from AsuX.fonts import CHAT_TITLE
 from PIL import Image, ImageDraw, ImageFont
 
 aiohttpsession = aiohttp.ClientSession()
