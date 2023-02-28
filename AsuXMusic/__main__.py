@@ -1,11 +1,14 @@
 import asyncio
-
+import importlib
 from pytgcalls import idle
+from AsuXMusic.Modules import ALL_MODULES
+from AsuXMusic import bot, call_py, BOT_USERNAME
 
-from AsuXMusic import bot, call_py
+loop = asyncio.get_event_loop()
 
-
-async def start_bot():
+async def AsuX_boot():
+    for all_module in ALL_MODULES:
+        importlib.import_module("AsuXMusic.Modules." + all_module)    
     print("[INFO]: STARTING BOT CLIENT")
     await bot.start()
     print("[INFO]: STARTING PYTGCALLS CLIENT")
@@ -13,7 +16,7 @@ async def start_bot():
     await idle()
     print("[INFO]: STOPPING BOT & USERBOT")
     await bot.stop()
+    print(f"GoodBye!\nStopping @{BOT_USERNAME}")
 
-
-loop = asyncio.get_event_loop()
-loop.run_until_complete(start_bot())
+if __name__ == "__main__":
+    loop.run_until_complete(AsuX_boot())
