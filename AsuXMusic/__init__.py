@@ -1,6 +1,6 @@
 from pyrogram import Client
 from pytgcalls import PyTgCalls, idle
-
+from AsuXMusic.Modules import ALL_MODULES
 from AsuXMusic.config import API_HASH, API_ID, BOT_TOKEN, SESSION_NAME
 
 bot = Client(
@@ -37,3 +37,7 @@ with Client("AsuXMusic", API_ID, API_HASH, bot_token=BOT_TOKEN) as app:
 with Abishnoi as ass:
     getass = ass.get_me()
     ASSISTANT_USERNAME = getass.username
+
+print("ɪɴғᴏ: ʙᴏᴛᴛɪɴɢ ʏᴏᴜʀ ᴄʟɪᴇɴᴛ")
+print("sᴜᴄᴄᴇssғᴜʟʟʏ ʟᴏᴀᴅᴇᴅ ᴍᴏᴅᴜʟᴇs -: " + str(ALL_MODULES))
+print(f"ɪɴғᴏ: ʙᴏᴛᴛɪɴɢ ʏᴏᴜʀ ᴄʟɪᴇɴᴛ ᴀs -: {BOT_USERNAME} ")    
