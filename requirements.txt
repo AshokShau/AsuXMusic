@@ -3,10 +3,10 @@ asyncio
 ffmpeg-python
 py-tgcalls==0.8.1
 pyrogram==1.4.12
-youtube-search-python==1.4.9
-yt_dlp
 youtube_dl
-youtube-search
+git+https://github.com/yt-dlp/yt-dlp@master
+git+https://github.com/joetats/youtube_search@master
+git+https://github.com/alexmercerind/youtube-search-python@main
 python-dotenv
 dnspython
 gitpython
