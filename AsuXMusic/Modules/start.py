@@ -30,8 +30,11 @@ async def _human_time_duration(seconds):
     return ", ".join(parts)
 
 
-
-@Abishnoi.on_message(command(["start", f"start@{BOT_USERNAME}", "ping"]) & filters.group & ~filters.edited)
+@Abishnoi.on_message(
+    command(["start", f"start@{BOT_USERNAME}", "ping"])
+    & filters.group
+    & ~filters.edited
+)
 async def start(client: Client, message: Message):
     current_time = datetime.utcnow()
     uptime_sec = (current_time - START_TIME).total_seconds()
@@ -46,14 +49,11 @@ async def start(client: Client, message: Message):
                     ),
                     InlineKeyboardButton(
                         "🏡 ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{UPDATES_CHANNEL}"
-                    )
+                    ),
                 ]
             ]
-        )
+        ),
     )
-
-
-
 
 
 @Abishnoi.on_message(command(["start", "help"]) & ~filters.group)
