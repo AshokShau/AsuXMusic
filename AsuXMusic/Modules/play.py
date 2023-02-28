@@ -14,7 +14,7 @@ import ffmpeg
 import requests
 from AsuX.fonts import CHAT_TITLE
 from PIL import Image, ImageDraw, ImageFont
-from AsuXMusic import ASSISTANT_NAME, BOT_USERNAME
+from AsuXMusic import ASSISTANT_USERNAME as ASSISTANT_NAME, BOT_USERNAME
 from AsuXMusic.config import IMG_1, IMG_2, IMG_5
 from AsuX.filters import command, other_filters
 from AsuX.queues import QUEUE, add_to_queue
