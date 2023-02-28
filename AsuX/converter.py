@@ -37,4 +37,4 @@ async def convert(file_path: str) -> str:
 
         return out
     except:
-        raise FFmpegReturnCodeError("FFmpeg did not return 0"
+        raise FFmpegReturnCodeError("FFmpeg did not return 0")
