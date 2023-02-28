@@ -1,17 +1,16 @@
-from pyrogram import Client
-from AsuXMusic import bot , Abishnoi
-from AsuXMusic.config import API_ID, API_HASH, BOT_TOKEN, SESSION_NAME
-from pytgcalls import PyTgCalls, idle
+import asyncio
+from pytgcalls import idle
+from AsuXMusic import call_py, bot
+
+async def start_bot():
+    print("[INFO]: STARTING BOT CLIENT")
+    await bot.start()
+    print("[INFO]: STARTING PYTGCALLS CLIENT")
+    await call_py.start()
+    await idle()
+    print("[INFO]: STOPPING BOT & USERBOT")
+    await bot.stop()
 
 
-
-user = PyTgCalls(Abishnoi,
-    cache_duration=100,
-    overload_quiet_mode=True,)
-
-call_py = PyTgCalls(Abishnoi, overload_quiet_mode=True)
-
-with Client("AsuX", API_ID, API_HASH, bot_token=BOT_TOKEN) as app:
-    me_bot = app.get_me()
-with Abishnoi as app:
-    me_Abishnoi = app.get_me()
+loop = asyncio.get_event_loop()
+loop.run_until_complete(start_bot())
