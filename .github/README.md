@@ -40,15 +40,7 @@ v<h2 align="center">
 <p align="center"><a href="https://cloud.okteto.com/deploy?repository=https://github.com/Abishnoi69/AsuXMusic"><img src="https://img.shields.io/badge/Deploy%20On%20Okteto-informational?style=for-the-badge&logo=Okteto" width="200" height="35.45"/></a></p>
 
 <h2 align="center">
- 
- <h3 align="center">
-    ─「 ᴅᴇᴩʟᴏʏ ᴏɴ sᴄᴀʟʟɪɴɢᴏ 」─
-    
-</h3>
 
-<p align="center"><a href="https://my.scalingo.com/deploy?template=https://github.com/Abishnoi69/AsuXMusic"> <img src="https://cdn.scalingo.com/deploy/button.svg" width="220" height="38.45"/></a></p>
-
-<h2 align="center">
   
  
  
