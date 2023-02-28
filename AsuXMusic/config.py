@@ -23,5 +23,5 @@ IMG_4 = getenv("IMG_4", "https://telegra.ph/file/be5f551acb116292d15ec.png")
 IMG_5 = getenv("IMG_5", "https://telegra.ph/file/c3401a572375b569138c3.png")
 IMG_6 = getenv("IMG_6", "https://telegra.ph/file/d8f8fc1de9110b93ca94c.jpg")
 YOUTUBE_IMG_URL = getenv(
-    "YOUTUBE_IMG_URL", "https://te.legra.ph/file/314097c1825e2cddfc6cd.jpg"
+    "YOUTUBE_IMG_URL", "https://te.legra.ph/file/bc5556476395a0c8e109b.jpg"
 )
