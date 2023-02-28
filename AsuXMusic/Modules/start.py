@@ -30,6 +30,32 @@ async def _human_time_duration(seconds):
     return ", ".join(parts)
 
 
+
+@Abishnoi.on_message(command(["start", f"start@{BOT_USERNAME}", "ping"]) & filters.group & ~filters.edited)
+async def start(client: Client, message: Message):
+    current_time = datetime.utcnow()
+    uptime_sec = (current_time - START_TIME).total_seconds()
+    uptime = await _human_time_duration(int(uptime_sec))
+    await message.reply_text(
+        f"""✔ **ʙᴏᴛ ɪs ʀᴜɴɴɪɴɢ**\n<b>☣ **ᴜᴘᴛɪᴍᴇ:**</b> `{uptime}`""",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "🥀 ɢʀᴏᴜᴘ", url=f"https://t.me/{GROUP_SUPPORT}"
+                    ),
+                    InlineKeyboardButton(
+                        "🏡 ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{UPDATES_CHANNEL}"
+                    )
+                ]
+            ]
+        )
+    )
+
+
+
+
+
 @Abishnoi.on_message(command(["start", "help"]) & ~filters.group)
 async def start(_, message: Message):
     await message.reply_text(
