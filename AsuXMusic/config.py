@@ -11,7 +11,7 @@ admins = {}
 
 SESSION_NAME = getenv("SESSION_NAME", "")
 
-BOT_TOKEN = ""
+BOT_TOKEN = getenv("BOT_TOKEN", "")
 API_ID = int(getenv("API_ID", "8186557"))
 API_HASH = getenv("API_HASH", "efd77b34c69c164ce158037ff5a0d117")
 GROUP_SUPPORT = getenv("GROUP_SUPPORT", "AbishnoiMF")
