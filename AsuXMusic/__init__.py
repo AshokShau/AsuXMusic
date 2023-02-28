@@ -23,6 +23,8 @@ user = PyTgCalls(Abishnoi,
 
 call_py = PyTgCalls(Abishnoi, overload_quiet_mode=True)
 
+OWNER_NAME = "Abishnoi1M"
+
 with Client("AsuXMusic", API_ID, API_HASH, bot_token=BOT_TOKEN) as app:
     x = app.get_me()
     BOT_ID = x.id
