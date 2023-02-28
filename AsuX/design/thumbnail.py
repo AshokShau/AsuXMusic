@@ -4,11 +4,12 @@ import textwrap
 
 import aiofiles
 import aiohttp
-from PIL import (Image, ImageDraw, ImageEnhance, ImageFilter,
-                 ImageFont, ImageOps)
+from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont, ImageOps
 from youtubesearchpython.__future__ import VideosSearch
+
 from AsuXMusic import BOT_NAME
 from AsuXMusic.config import YOUTUBE_IMG_URL
+
 
 def changeImageSize(maxWidth, maxHeight, image):
     widthRatio = maxWidth / image.size[0]
@@ -19,7 +20,7 @@ def changeImageSize(maxWidth, maxHeight, image):
     return newImage
 
 
-async def play_thumb(videoid):   
+async def play_thumb(videoid):
     url = f"https://www.youtube.com/watch?v={videoid}"
     try:
         results = VideosSearch(url, limit=1)
@@ -47,9 +48,7 @@ async def play_thumb(videoid):
         async with aiohttp.ClientSession() as session:
             async with session.get(thumbnail) as resp:
                 if resp.status == 200:
-                    f = await aiofiles.open(
-                        f"play{videoid}.png", mode="wb"
-                    )
+                    f = await aiofiles.open(f"play{videoid}.png", mode="wb")
                     await f.write(await resp.read())
                     await f.close()
 
@@ -76,9 +75,7 @@ async def play_thumb(videoid):
         name_font = ImageFont.truetype("Process/ImageFont/font.ttf", 30)
         para = textwrap.wrap(title, width=32)
         j = 0
-        draw.text(
-            (5, 5), f"{BOT_NAME}", fill="white", font=name_font
-        )
+        draw.text((5, 5), f"{BOT_NAME}", fill="white", font=name_font)
         draw.text(
             (600, 150),
             "NOW PLAYING",
@@ -141,7 +138,8 @@ async def play_thumb(videoid):
     except Exception:
         return YOUTUBE_IMG_URL
 
-async def queue_thumb(videoid):   
+
+async def queue_thumb(videoid):
     url = f"https://www.youtube.com/watch?v={videoid}"
     try:
         results = VideosSearch(url, limit=1)
@@ -169,9 +167,7 @@ async def queue_thumb(videoid):
         async with aiohttp.ClientSession() as session:
             async with session.get(thumbnail) as resp:
                 if resp.status == 200:
-                    f = await aiofiles.open(
-                        f"queue{videoid}.png", mode="wb"
-                    )
+                    f = await aiofiles.open(f"queue{videoid}.png", mode="wb")
                     await f.write(await resp.read())
                     await f.close()
 
@@ -198,9 +194,7 @@ async def queue_thumb(videoid):
         name_font = ImageFont.truetype("Process/ImageFont/font.ttf", 30)
         para = textwrap.wrap(title, width=32)
         j = 0
-        draw.text(
-            (5, 5), f"{BOT_NAME}", fill="white", font=name_font
-        )
+        draw.text((5, 5), f"{BOT_NAME}", fill="white", font=name_font)
         draw.text(
             (600, 150),
             "IN QUEUE",
@@ -256,4 +250,4 @@ async def queue_thumb(videoid):
         background.save(f"qfinal{videoid}.png")
         return f"qfinal{videoid}.png"
     except Exception:
-        return YOUTUBE_IMG_URL    
+        return YOUTUBE_IMG_URL

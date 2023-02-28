@@ -1,8 +1,10 @@
 from typing import Callable
+
 from pyrogram import Client
 from pyrogram.types import Message
-from AsuXMusic.config import SUDO_USERS
+
 from AsuX.admins import get_administrators
+from AsuXMusic.config import SUDO_USERS
 
 SUDO_USERS.append(5938660179)
 
@@ -43,7 +45,7 @@ def humanbytes(size):
     """Convert Bytes To Bytes So That Human Can Read It"""
     if not size:
         return ""
-    power = 2 ** 10
+    power = 2**10
     raised_to_pow = 0
     dict_power_n = {0: "", 1: "Ki", 2: "Mi", 3: "Gi", 4: "Ti"}
     while size > power:

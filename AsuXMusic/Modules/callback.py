@@ -1,23 +1,20 @@
 import yt_dlp
-from AsuX.queues import QUEUE
-from pyrogram import filters
-from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
-from AsuXMusic import bot as Client
-from AsuXMusic import ASSISTANT_USERNAME, BOT_NAME, BOT_USERNAME, OWNER_NAME
-from AsuXMusic.config import (
-    GROUP_SUPPORT,
-    UPDATES_CHANNEL,
-)
-from AsuX.inline import menu_markup, song_download_markup, stream_markup, audio_markup
-
-
-from pyrogram import Client, errors
+from pyrogram import Client, filters
 from pyrogram.types import (
+    CallbackQuery,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
     InlineQuery,
     InlineQueryResultArticle,
     InputTextMessageContent,
 )
 from youtubesearchpython import VideosSearch
+
+from AsuX.inline import menu_markup, song_download_markup, stream_markup
+from AsuX.queues import QUEUE
+from AsuXMusic import ASSISTANT_USERNAME, BOT_NAME, BOT_USERNAME
+from AsuXMusic import bot as Client
+from AsuXMusic.config import GROUP_SUPPORT, UPDATES_CHANNEL
 
 
 def ytsearch(query):
@@ -34,10 +31,10 @@ def ytsearch(query):
         print(e)
         return 0
 
+
 @Client.on_inline_query()
 async def inline(client: Client, query: InlineQuery):
-    answerss = (
-      [
+    answerss = [
         InlineQueryResultArticle(
             title="Pause Stream",
             description=f"ᴘᴀᴜsᴇ ᴛʜᴇ ᴄᴜʀʀᴇɴᴛ ᴘʟᴀʏᴏᴜᴛ ᴏɴ ɢʀᴏᴜᴘ ᴄᴀʟʟ.",
@@ -74,8 +71,7 @@ async def inline(client: Client, query: InlineQuery):
             thumb_url="https://telegra.ph/file/d2eb03211baaba8838cc4.png",
             input_message_content=InputTextMessageContent("/stop"),
         ),
-      ]
-    )
+    ]
     search_query = query.query.lower().strip().rstrip()
 
     if search_query == "":
@@ -98,31 +94,29 @@ async def cbstart(_, query: CallbackQuery):
         """,
         reply_markup=InlineKeyboardMarkup(
             [
-                [                   
+                [
+                    InlineKeyboardButton("ᴄᴏᴍᴍᴀɴᴅs & ʜᴇʟᴘ ❔", callback_data="cbbasic"),
+                ],
+                [
+                    InlineKeyboardButton("ʜᴏᴡ ᴛᴏ ᴜsᴇ ᴍᴇ ❓", callback_data="cbhowtouse"),
+                ],
+                [
                     InlineKeyboardButton(
-                        "ᴄᴏᴍᴍᴀɴᴅs & ʜᴇʟᴘ ❔", callback_data="cbbasic"
+                        "ᴜᴘᴅᴀᴛᴇs", url=f"https://t.me/{UPDATES_CHANNEL}"
+                    ),
+                    InlineKeyboardButton(
+                        "sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
                 ],
                 [
                     InlineKeyboardButton(
-                        "ʜᴏᴡ ᴛᴏ ᴜsᴇ ᴍᴇ ❓", callback_data="cbhowtouse"
-                    ),
-                  ],[
-                    InlineKeyboardButton(
-                       "ᴜᴘᴅᴀᴛᴇs", url=f"https://t.me/{UPDATES_CHANNEL}"
-                    ),
-                    InlineKeyboardButton(
-                       "sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{GROUP_SUPPORT}"
-                    )
-                ],[
-                    InlineKeyboardButton(
                         "➕ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ➕",
                         url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
                     )
-                ]
+                ],
             ]
         ),
-     disable_web_page_preview=True
+        disable_web_page_preview=True,
     )
 
 
@@ -146,6 +140,7 @@ async def cbguides(_, query: CallbackQuery):
         ),
     )
 
+
 @Client.on_callback_query(filters.regex("cbbasic"))
 async def cbbasic(_, query: CallbackQuery):
     await query.edit_message_text(
@@ -165,21 +160,26 @@ async def cbbasic(_, query: CallbackQuery):
         ),
     )
 
+
 @Client.on_callback_query(filters.regex("cbmenu"))
 async def cbmenu(_, query: CallbackQuery):
     a = await _.get_chat_member(query.message.chat.id, query.from_user.id)
     if not a.can_manage_voice_chats:
-        return await query.answer("💡 ᴏɴʟʏ ᴀᴅᴍɪɴ ᴡɪᴛʜ ᴍᴀɴᴀɢᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛs ᴘᴇʀᴍɪssɪᴏɴ ᴛʜᴀᴛ ᴄᴀɴ ᴛᴀᴘ ᴛʜɪs ʙᴜᴛᴛᴏɴ !", show_alert=True)
+        return await query.answer(
+            "💡 ᴏɴʟʏ ᴀᴅᴍɪɴ ᴡɪᴛʜ ᴍᴀɴᴀɢᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛs ᴘᴇʀᴍɪssɪᴏɴ ᴛʜᴀᴛ ᴄᴀɴ ᴛᴀᴘ ᴛʜɪs ʙᴜᴛᴛᴏɴ !",
+            show_alert=True,
+        )
     chat_id = query.message.chat.id
     user_id = query.message.from_user.id
     buttons = menu_markup(user_id)
     if chat_id in QUEUE:
-          await query.answer("ᴄᴏɴᴛʀᴏʟ ᴘᴀɴᴇʟ ᴏᴘᴇɴᴇᴅ")
-          await query.edit_message_reply_markup(         
-              reply_markup=InlineKeyboardMarkup(buttons),
-          )
+        await query.answer("ᴄᴏɴᴛʀᴏʟ ᴘᴀɴᴇʟ ᴏᴘᴇɴᴇᴅ")
+        await query.edit_message_reply_markup(
+            reply_markup=InlineKeyboardMarkup(buttons),
+        )
     else:
         await query.answer("❌ ɴᴏᴛʜɪɴɢ ɪs ᴄᴜʀʀᴇɴᴛʟʏ sᴛʀᴇᴀᴍɪɴɢ", show_alert=True)
+
 
 @Client.on_callback_query(filters.regex("cbdown"))
 async def cbdown(_, CallbackQuery):
@@ -193,6 +193,7 @@ async def cbdown(_, CallbackQuery):
         reply_markup=InlineKeyboardMarkup(buttons)
     )
 
+
 @Client.on_callback_query(filters.regex(pattern=r"song_back"))
 async def songs_back_helper(client, CallbackQuery):
     callback_data = CallbackQuery.data.strip()
@@ -203,6 +204,7 @@ async def songs_back_helper(client, CallbackQuery):
     return await CallbackQuery.edit_message_reply_markup(
         reply_markup=InlineKeyboardMarkup(buttons)
     )
+
 
 @Client.on_callback_query(filters.regex(pattern=r"gets"))
 async def song_helper_cb(client, CallbackQuery):
@@ -216,9 +218,7 @@ async def song_helper_cb(client, CallbackQuery):
         pass
     if stype == "audio":
         try:
-            formats_available, link = await YouTube.formats(
-                videoid, True
-            )
+            formats_available, link = await YouTube.formats(videoid, True)
         except:
             return await CallbackQuery.edit_message_text("ᴅᴏᴡɴʟᴏᴀᴅ ᴀᴜᴅɪᴏ")
         keyboard = InlineKeyboard()
@@ -246,18 +246,12 @@ async def song_helper_cb(client, CallbackQuery):
                 text="🔙 ʙᴀᴄᴋ",
                 callback_data=f"song_back {stype}|{videoid}",
             ),
-            InlineKeyboardButton(
-                text="✖️ ᴄʟᴏsᴇ ", callback_data=f"cls"
-            ),
+            InlineKeyboardButton(text="✖️ ᴄʟᴏsᴇ ", callback_data=f"cls"),
         )
-        return await CallbackQuery.edit_message_reply_markup(
-            reply_markup=keyboard
-        )
+        return await CallbackQuery.edit_message_reply_markup(reply_markup=keyboard)
     else:
         try:
-            formats_available, link = await YouTube.formats(
-                videoid, True
-            )
+            formats_available, link = await YouTube.formats(videoid, True)
         except Exception as e:
             print(e)
             return await CallbackQuery.edit_message_text("ᴅᴏᴡɴʟᴏᴀᴅ ᴠɪᴅᴇᴏ")
@@ -283,13 +277,10 @@ async def song_helper_cb(client, CallbackQuery):
                 text="🔙 ʙᴀᴄᴋ",
                 callback_data=f"song_back {stype}|{videoid}",
             ),
-            InlineKeyboardButton(
-                text="✖️ ᴄʟᴏsᴇ", callback_data=f"cls"
-            ),
+            InlineKeyboardButton(text="✖️ ᴄʟᴏsᴇ", callback_data=f"cls"),
         )
-        return await CallbackQuery.edit_message_reply_markup(
-            reply_markup=keyboard
-        )
+        return await CallbackQuery.edit_message_reply_markup(reply_markup=keyboard)
+
 
 @Client.on_callback_query(filters.regex(pattern=r"song_download"))
 async def song_download_cb(client, CallbackQuery):
@@ -372,25 +363,33 @@ async def song_download_cb(client, CallbackQuery):
             return await mystic.edit_text("sᴏᴏɴᴀᴜᴅɪᴏ")
         os.remove(filename)
 
+
 @Client.on_callback_query(filters.regex("cbhome"))
 async def cbhome(_, query: CallbackQuery):
     a = await _.get_chat_member(query.message.chat.id, query.from_user.id)
     if not a.can_manage_voice_chats:
-        return await query.answer("💡 ᴏɴʟʏ ᴀᴅᴍɪɴ ᴡɪᴛʜ ᴍᴀɴᴀɢᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛs ᴘᴇʀᴍɪssɪᴏɴ ᴛʜᴀᴛ ᴄᴀɴ ᴛᴀᴘ ᴛʜɪs ʙᴜᴛᴛᴏɴ !", show_alert=True)
+        return await query.answer(
+            "💡 ᴏɴʟʏ ᴀᴅᴍɪɴ ᴡɪᴛʜ ᴍᴀɴᴀɢᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛs ᴘᴇʀᴍɪssɪᴏɴ ᴛʜᴀᴛ ᴄᴀɴ ᴛᴀᴘ ᴛʜɪs ʙᴜᴛᴛᴏɴ !",
+            show_alert=True,
+        )
     chat_id = query.message.chat.id
     user_id = query.message.from_user.id
     buttons = stream_markup(user_id, dlurl)
     if chat_id in QUEUE:
-          await query.answer("Back")
-          await query.edit_message_reply_markup(         
-              reply_markup=InlineKeyboardMarkup(buttons),
-          )
+        await query.answer("Back")
+        await query.edit_message_reply_markup(
+            reply_markup=InlineKeyboardMarkup(buttons),
+        )
     else:
         await query.answer("❌ ɴᴏᴛʜɪɴɢ ɪs ᴄᴜʀʀᴇɴᴛʟʏ sᴛʀᴇᴀᴍɪɴɢ", show_alert=True)
-    
+
+
 @Client.on_callback_query(filters.regex("cls"))
 async def close(_, query: CallbackQuery):
     a = await _.get_chat_member(query.message.chat.id, query.from_user.id)
     if not a.can_manage_voice_chats:
-        return await query.answer("💡 ᴏɴʟʏ ᴀᴅᴍɪɴ ᴡɪᴛʜ ᴍᴀɴᴀɢᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛs ᴘᴇʀᴍɪssɪᴏɴ ᴛʜᴀᴛ ᴄᴀɴ ᴛᴀᴘ ᴛʜɪs ʙᴜᴛᴛᴏɴ !", show_alert=True)
+        return await query.answer(
+            "💡 ᴏɴʟʏ ᴀᴅᴍɪɴ ᴡɪᴛʜ ᴍᴀɴᴀɢᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛs ᴘᴇʀᴍɪssɪᴏɴ ᴛʜᴀᴛ ᴄᴀɴ ᴛᴀᴘ ᴛʜɪs ʙᴜᴛᴛᴏɴ !",
+            show_alert=True,
+        )
     await query.message.delete()

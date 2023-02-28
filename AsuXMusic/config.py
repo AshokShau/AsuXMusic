@@ -1,5 +1,6 @@
 import os
 from os import getenv
+
 from dotenv import load_dotenv
 
 if os.path.exists("local.env"):
@@ -25,4 +26,6 @@ IMG_3 = getenv("IMG_3", "https://telegra.ph/file/f02efde766160d3ff52d6.png")
 IMG_4 = getenv("IMG_4", "https://telegra.ph/file/be5f551acb116292d15ec.png")
 IMG_5 = getenv("IMG_5", "https://telegra.ph/file/c3401a572375b569138c3.png")
 IMG_6 = getenv("IMG_6", "https://telegra.ph/file/d8f8fc1de9110b93ca94c.jpg")
-YOUTUBE_IMG_URL = getenv("YOUTUBE_IMG_URL", "https://te.legra.ph/file/314097c1825e2cddfc6cd.jpg")
+YOUTUBE_IMG_URL = getenv(
+    "YOUTUBE_IMG_URL", "https://te.legra.ph/file/314097c1825e2cddfc6cd.jpg"
+)

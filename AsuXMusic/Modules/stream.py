@@ -1,33 +1,27 @@
-from AsuX.admins import admins
-from AsuXMusic import call_py
 from pyrogram import filters
-from AsuX.decorators import authorized_users_only
-from AsuX.filters import command, other_filters
-from AsuX.queues import QUEUE, clear_queue
-from AsuXMusic import bot as Abishnoi
-from AsuX.utils import skip_current_song, skip_item
-
-
-
-
-from AsuXMusic import BOT_USERNAME
-from AsuXMusic.config import GROUP_SUPPORT, IMG_3, UPDATES_CHANNEL, IMG_5
 from pyrogram.types import (
     CallbackQuery,
     InlineKeyboardButton,
     InlineKeyboardMarkup,
     Message,
 )
+
 from AsuX import stream_markup
+from AsuX.decorators import authorized_users_only
+from AsuX.filters import command, other_filters
+from AsuX.queues import QUEUE, clear_queue
+from AsuX.utils import skip_current_song, skip_item
+from AsuXMusic import BOT_USERNAME
+from AsuXMusic import bot as Abishnoi
+from AsuXMusic import call_py
+from AsuXMusic.config import IMG_3, IMG_5
 
 bttn = InlineKeyboardMarkup(
     [[InlineKeyboardButton("🔙 ɢᴏ ʙᴀᴄᴋ", callback_data="cbmenu")]]
 )
 
 
-bcl = InlineKeyboardMarkup(
-    [[InlineKeyboardButton("🤺 ᴄʟᴏsᴇ", callback_data="cls")]]
-)
+bcl = InlineKeyboardMarkup([[InlineKeyboardButton("🤺 ᴄʟᴏsᴇ", callback_data="cls")]])
 
 
 @Abishnoi.on_message(command(["reload", f"reload@{BOT_USERNAME}"]) & other_filters)
@@ -47,16 +41,11 @@ async def update_admin(client, message):
 @Abishnoi.on_message(command(["skip", f"skip@{BOT_USERNAME}", "vskip"]) & other_filters)
 @authorized_users_only
 async def skip(client, m: Message):
-
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton(
-                    text="• Mᴇɴᴜ", callback_data="cbmenu"
-                ),
-                InlineKeyboardButton(
-                    text="• Cʟᴏsᴇ", callback_data="cls"
-                ),
+                InlineKeyboardButton(text="• Mᴇɴᴜ", callback_data="cbmenu"),
+                InlineKeyboardButton(text="• Cʟᴏsᴇ", callback_data="cls"),
             ]
         ]
     )
@@ -67,9 +56,13 @@ async def skip(client, m: Message):
         if op == 0:
             await m.reply("❌ ɴᴏᴛʜɪɴɢ ɪs ᴄᴜʀʀᴇɴᴛʟʏ ᴘʟᴀʏɪɴɢ")
         elif op == 1:
-            await m.reply("✅ __ǫᴜᴇᴜᴇs__ **is empty.**\n\n**• ᴜsᴇʀʙᴏᴛ ʟᴇᴀᴠɪɴɢ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ**")
+            await m.reply(
+                "✅ __ǫᴜᴇᴜᴇs__ **is empty.**\n\n**• ᴜsᴇʀʙᴏᴛ ʟᴇᴀᴠɪɴɢ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ**"
+            )
         elif op == 2:
-            await m.reply("🗑️ **ᴄʟᴇᴀʀɪɴɢ ᴛʜᴇ ǫᴜᴇᴜᴇs**\n\n**• ᴜsᴇʀʙᴏᴛ ʟᴇᴀᴠɪɴɢ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ**")
+            await m.reply(
+                "🗑️ **ᴄʟᴇᴀʀɪɴɢ ᴛʜᴇ ǫᴜᴇᴜᴇs**\n\n**• ᴜsᴇʀʙᴏᴛ ʟᴇᴀᴠɪɴɢ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ**"
+            )
         else:
             await m.reply_photo(
                 photo=f"{IMG_3}",
@@ -148,9 +141,7 @@ async def resume(client, m: Message):
         await m.reply("❌ **ɴᴏᴛʜɪɴɢ ɪɴ sᴛʀᴇᴀᴍɪɴɢ**")
 
 
-@Abishnoi.on_message(
-    command(["mute", f"mute@{BOT_USERNAME}", "vmute"]) & other_filters
-)
+@Abishnoi.on_message(command(["mute", f"mute@{BOT_USERNAME}", "vmute"]) & other_filters)
 @authorized_users_only
 async def mute(client, m: Message):
     chat_id = m.chat.id
@@ -187,10 +178,15 @@ async def unmute(client, m: Message):
 @Abishnoi.on_callback_query(filters.regex("cbpause"))
 async def cbpause(_, query: CallbackQuery):
     if query.message.sender_chat:
-        return await query.answer("ʏᴏᴜ'ʀᴇ ᴀɴ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ !\n\n» ʀᴇᴠᴇʀᴛ ʙᴀᴄᴋ ᴛᴏ ᴜsᴇʀ ᴀᴄᴄᴏᴜɴᴛ ғʀᴏᴍ ᴀᴅᴍɪɴ ʀɪɢʜᴛs.")
+        return await query.answer(
+            "ʏᴏᴜ'ʀᴇ ᴀɴ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ !\n\n» ʀᴇᴠᴇʀᴛ ʙᴀᴄᴋ ᴛᴏ ᴜsᴇʀ ᴀᴄᴄᴏᴜɴᴛ ғʀᴏᴍ ᴀᴅᴍɪɴ ʀɪɢʜᴛs."
+        )
     a = await _.get_chat_member(query.message.chat.id, query.from_user.id)
     if not a.can_manage_voice_chats:
-        return await query.answer("💡 ᴏɴʟʏ ᴀᴅᴍɪɴ ᴡɪᴛʜ ᴍᴀɴᴀɢᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛs ᴘᴇʀᴍɪssɪᴏɴ ᴛʜᴀᴛ ᴄᴀɴ ᴛᴀᴘ ᴛʜɪs button !", show_alert=True)
+        return await query.answer(
+            "💡 ᴏɴʟʏ ᴀᴅᴍɪɴ ᴡɪᴛʜ ᴍᴀɴᴀɢᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛs ᴘᴇʀᴍɪssɪᴏɴ ᴛʜᴀᴛ ᴄᴀɴ ᴛᴀᴘ ᴛʜɪs button !",
+            show_alert=True,
+        )
     chat_id = query.message.chat.id
     if chat_id in QUEUE:
         try:
@@ -207,10 +203,15 @@ async def cbpause(_, query: CallbackQuery):
 @Abishnoi.on_callback_query(filters.regex("cbresume"))
 async def cbresume(_, query: CallbackQuery):
     if query.message.sender_chat:
-        return await query.answer("ʏᴏᴜ'ʀᴇ ᴀɴ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ !\n\n» ʀᴇᴠᴇʀᴛ ʙᴀᴄᴋ ᴛᴏ ᴜsᴇʀ ᴀᴄᴄᴏᴜɴᴛ ғʀᴏᴍ ᴀᴅᴍɪɴ ʀɪɢʜᴛs.")
+        return await query.answer(
+            "ʏᴏᴜ'ʀᴇ ᴀɴ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ !\n\n» ʀᴇᴠᴇʀᴛ ʙᴀᴄᴋ ᴛᴏ ᴜsᴇʀ ᴀᴄᴄᴏᴜɴᴛ ғʀᴏᴍ ᴀᴅᴍɪɴ ʀɪɢʜᴛs."
+        )
     a = await _.get_chat_member(query.message.chat.id, query.from_user.id)
     if not a.can_manage_voice_chats:
-        return await query.answer("💡 ᴏɴʟʏ ᴀᴅᴍɪɴ ᴡɪᴛʜ ᴍᴀɴᴀɢᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛs ᴘᴇʀᴍɪssɪᴏɴ ᴛʜᴀᴛ ᴄᴀɴ ᴛᴀᴘ ᴛʜɪs ʙᴜᴛᴛᴏɴ !", show_alert=True)
+        return await query.answer(
+            "💡 ᴏɴʟʏ ᴀᴅᴍɪɴ ᴡɪᴛʜ ᴍᴀɴᴀɢᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛs ᴘᴇʀᴍɪssɪᴏɴ ᴛʜᴀᴛ ᴄᴀɴ ᴛᴀᴘ ᴛʜɪs ʙᴜᴛᴛᴏɴ !",
+            show_alert=True,
+        )
     chat_id = query.message.chat.id
     if chat_id in QUEUE:
         try:
@@ -227,16 +228,23 @@ async def cbresume(_, query: CallbackQuery):
 @Abishnoi.on_callback_query(filters.regex("cbstop"))
 async def cbstop(_, query: CallbackQuery):
     if query.message.sender_chat:
-        return await query.answer("ʏᴏᴜ'ʀᴇ ᴀɴ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ !\n\n» ʀᴇᴠᴇʀᴛ ʙᴀᴄᴋ ᴛᴏ ᴜsᴇʀ ᴀᴄᴄᴏᴜɴᴛ ғʀᴏᴍ ᴀᴅᴍɪɴ ʀɪɢʜᴛs.")
+        return await query.answer(
+            "ʏᴏᴜ'ʀᴇ ᴀɴ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ !\n\n» ʀᴇᴠᴇʀᴛ ʙᴀᴄᴋ ᴛᴏ ᴜsᴇʀ ᴀᴄᴄᴏᴜɴᴛ ғʀᴏᴍ ᴀᴅᴍɪɴ ʀɪɢʜᴛs."
+        )
     a = await _.get_chat_member(query.message.chat.id, query.from_user.id)
     if not a.can_manage_voice_chats:
-        return await query.answer("💡 ᴏɴʟʏ ᴀᴅᴍɪɴ ᴡɪᴛʜ ᴍᴀɴᴀɢᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛs ᴘᴇʀᴍɪssɪᴏɴ ᴛʜᴀᴛ ᴄᴀɴ ᴛᴀᴘ ᴛʜɪs ʙᴜᴛᴛᴏɴ !", show_alert=True)
+        return await query.answer(
+            "💡 ᴏɴʟʏ ᴀᴅᴍɪɴ ᴡɪᴛʜ ᴍᴀɴᴀɢᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛs ᴘᴇʀᴍɪssɪᴏɴ ᴛʜᴀᴛ ᴄᴀɴ ᴛᴀᴘ ᴛʜɪs ʙᴜᴛᴛᴏɴ !",
+            show_alert=True,
+        )
     chat_id = query.message.chat.id
     if chat_id in QUEUE:
         try:
             await call_py.leave_group_call(chat_id)
             clear_queue(chat_id)
-            await query.edit_message_text("✅ **ᴛʜɪs sᴛʀᴇᴀᴍɪɴɢ ʜᴀs ᴇɴᴅᴇᴅ**", reply_markup=bcl)
+            await query.edit_message_text(
+                "✅ **ᴛʜɪs sᴛʀᴇᴀᴍɪɴɢ ʜᴀs ᴇɴᴅᴇᴅ**", reply_markup=bcl
+            )
         except Exception as e:
             await query.edit_message_text(f"🚫 **ᴇʀʀᴏʀ:**\n\n`{e}`", reply_markup=bcl)
     else:
@@ -246,10 +254,15 @@ async def cbstop(_, query: CallbackQuery):
 @Abishnoi.on_callback_query(filters.regex("cbmute"))
 async def cbmute(_, query: CallbackQuery):
     if query.message.sender_chat:
-        return await query.answer("ʏᴏᴜ'ʀᴇ ᴀɴ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ !\n\n» ʀᴇᴠᴇʀᴛ ʙᴀᴄᴋ ᴛᴏ ᴜsᴇʀ ᴀᴄᴄᴏᴜɴᴛ ғʀᴏᴍ ᴀᴅᴍɪɴ ʀɪɢʜᴛs.")
+        return await query.answer(
+            "ʏᴏᴜ'ʀᴇ ᴀɴ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ !\n\n» ʀᴇᴠᴇʀᴛ ʙᴀᴄᴋ ᴛᴏ ᴜsᴇʀ ᴀᴄᴄᴏᴜɴᴛ ғʀᴏᴍ ᴀᴅᴍɪɴ ʀɪɢʜᴛs."
+        )
     a = await _.get_chat_member(query.message.chat.id, query.from_user.id)
     if not a.can_manage_voice_chats:
-        return await query.answer("💡 ᴏɴʟʏ ᴀᴅᴍɪɴ ᴡɪᴛʜ ᴍᴀɴᴀɢᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ ᴘᴇʀᴍɪssɪᴏɴ ᴛʜᴀᴛ ᴄᴀɴ ᴛᴀᴘ ᴛʜɪs ʙᴜᴛᴛᴏɴ !", show_alert=True)
+        return await query.answer(
+            "💡 ᴏɴʟʏ ᴀᴅᴍɪɴ ᴡɪᴛʜ ᴍᴀɴᴀɢᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ ᴘᴇʀᴍɪssɪᴏɴ ᴛʜᴀᴛ ᴄᴀɴ ᴛᴀᴘ ᴛʜɪs ʙᴜᴛᴛᴏɴ !",
+            show_alert=True,
+        )
     chat_id = query.message.chat.id
     if chat_id in QUEUE:
         try:
@@ -266,10 +279,15 @@ async def cbmute(_, query: CallbackQuery):
 @Abishnoi.on_callback_query(filters.regex("cbunmute"))
 async def cbunmute(_, query: CallbackQuery):
     if query.message.sender_chat:
-        return await query.answer("you're an Anonymous Admin !\n\n» revert back to user account from admin rights.")
+        return await query.answer(
+            "you're an Anonymous Admin !\n\n» revert back to user account from admin rights."
+        )
     a = await _.get_chat_member(query.message.chat.id, query.from_user.id)
     if not a.can_manage_voice_chats:
-        return await query.answer("💡 ᴏɴʟʏ ᴀᴅᴍɪɴ ᴡɪᴛʜ ᴍᴀɴᴀɢᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛs ᴘᴇʀᴍɪssɪᴏɴ ᴛʜᴀᴛ ᴄᴀɴ ᴛᴀᴘ ᴛʜɪs ʙᴜᴛᴛᴏɴ !", show_alert=True)
+        return await query.answer(
+            "💡 ᴏɴʟʏ ᴀᴅᴍɪɴ ᴡɪᴛʜ ᴍᴀɴᴀɢᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛs ᴘᴇʀᴍɪssɪᴏɴ ᴛʜᴀᴛ ᴄᴀɴ ᴛᴀᴘ ᴛʜɪs ʙᴜᴛᴛᴏɴ !",
+            show_alert=True,
+        )
     chat_id = query.message.chat.id
     if chat_id in QUEUE:
         try:
@@ -293,28 +311,36 @@ async def change_volume(client, m: Message):
     if chat_id in QUEUE:
         try:
             await call_py.change_volume_call(chat_id, volume=int(range))
-            await m.reply(
-                f"✅ **ᴠᴏʟᴜᴍᴇ sᴇᴛ ᴛᴏ** `{range}`%"
-            )
+            await m.reply(f"✅ **ᴠᴏʟᴜᴍᴇ sᴇᴛ ᴛᴏ** `{range}`%")
         except Exception as e:
             await m.reply(f"🚫 **ᴇʀʀᴏʀ:**\n\n`{e}`")
     else:
         await m.reply("❌ **ɴᴏᴛʜɪɴɢ ɪɴ sᴛʀᴇᴀᴍɪɴɢ**")
 
+
 @Abishnoi.on_callback_query(filters.regex("cbskip"))
 async def cbskip(_, query: CallbackQuery):
     a = await _.get_chat_member(query.message.chat.id, query.from_user.id)
     if not a.can_manage_voice_chats:
-        return await query.answer("💡 ᴏɴʟʏ ᴀᴅᴍɪɴ ᴡɪᴛʜ ᴍᴀɴᴀɢᴇ ᴠɪᴅᴇᴏ ᴄʜᴀᴛ ᴘᴇʀᴍɪssɪᴏɴ ᴛʜᴀᴛ ᴄᴀɴ ᴛᴀᴘ ᴛʜɪs ʙᴜᴛᴛᴏɴ !", show_alert=True)
+        return await query.answer(
+            "💡 ᴏɴʟʏ ᴀᴅᴍɪɴ ᴡɪᴛʜ ᴍᴀɴᴀɢᴇ ᴠɪᴅᴇᴏ ᴄʜᴀᴛ ᴘᴇʀᴍɪssɪᴏɴ ᴛʜᴀᴛ ᴄᴀɴ ᴛᴀᴘ ᴛʜɪs ʙᴜᴛᴛᴏɴ !",
+            show_alert=True,
+        )
     chat_id = query.message.chat.id
     user_id = query.from_user.id
     queue = await skip_current_song(chat_id)
     if queue == 0:
         await query.answer("❌ ɴᴏᴛʜɪɴɢ ɪs ᴄᴜʀʀᴇɴᴛʟʏ ᴘʟᴀʏɪɴɢ", show_alert=True)
     elif queue == 1:
-        await query.answer("» ᴛʜᴇʀᴇ's ɴᴏ ᴍᴏʀᴇ ᴍᴜsɪᴄ ɪɴ ǫᴜᴇᴜᴇ ᴛᴏ sᴋɪᴘ, ᴜsᴇʀʙᴏᴛ ʟᴇᴀᴠɪɴɢ ᴠɪᴅᴇᴏ ᴄʜᴀᴛ.", show_alert=True)
+        await query.answer(
+            "» ᴛʜᴇʀᴇ's ɴᴏ ᴍᴏʀᴇ ᴍᴜsɪᴄ ɪɴ ǫᴜᴇᴜᴇ ᴛᴏ sᴋɪᴘ, ᴜsᴇʀʙᴏᴛ ʟᴇᴀᴠɪɴɢ ᴠɪᴅᴇᴏ ᴄʜᴀᴛ.",
+            show_alert=True,
+        )
     elif queue == 2:
-        await query.answer("🗑️ ᴄʟᴇᴀʀɪɴɢ ᴛʜᴇ **ǫᴜᴇᴜᴇs**\n\n» **ᴜsᴇʀʙᴏᴛ** ʟᴇᴀᴠɪɴɢ ᴠɪᴅᴇᴏ ᴄʜᴀᴛ.", show_alert=True)
+        await query.answer(
+            "🗑️ ᴄʟᴇᴀʀɪɴɢ ᴛʜᴇ **ǫᴜᴇᴜᴇs**\n\n» **ᴜsᴇʀʙᴏᴛ** ʟᴇᴀᴠɪɴɢ ᴠɪᴅᴇᴏ ᴄʜᴀᴛ.",
+            show_alert=True,
+        )
     else:
         await query.answer("ɢᴏᴇs ᴛᴏ ᴛʜᴇ ɴᴇxᴛ ᴛʀᴀᴄᴋ, ᴘʀᴏᴄᴄᴇssɪɴɢ...")
         await query.message.delete()

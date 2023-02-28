@@ -1,34 +1,21 @@
-import io
-from os import path
-from typing import Callable
-from asyncio.queues import QueueEmpty
-import os
-import random
-import re
-import youtube_dl
-import youtube_dl
-import aiofiles
-import aiohttp
-from AsuX.converter import convert
-import ffmpeg
-import requests
-from AsuX.fonts import CHAT_TITLE
-from PIL import Image, ImageDraw, ImageFont
-from AsuXMusic import ASSISTANT_USERNAME as ASSISTANT_NAME, BOT_USERNAME
-from AsuXMusic.config import IMG_1, IMG_2, IMG_5
-from AsuX.filters import command, other_filters
-from AsuX.queues import QUEUE, add_to_queue
-from AsuXMusic import call_py, Abishnoi as user
-from AsuX.utils import bash
-from AsuXMusic import bot as Abishnoi
 from pyrogram.errors import UserAlreadyParticipant, UserNotParticipant
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from pytgcalls import StreamType
+from pytgcalls.types.input_stream import AudioImagePiped
 from pytgcalls.types.input_stream.quality import MediumQualityVideo
-from pytgcalls.types.input_stream import AudioImagePiped, AudioVideoPiped
 from youtubesearchpython import VideosSearch
+
+from AsuX.filters import command, other_filters
+from AsuX.inline import audio_markup, stream_markup
+from AsuX.queues import QUEUE, add_to_queue
 from AsuX.thumbnail import play_thumb, queue_thumb
-from AsuX.inline import stream_markup, audio_markup
+from AsuX.utils import bash
+from AsuXMusic import BOT_USERNAME
+from AsuXMusic import Abishnoi as user
+from AsuXMusic import bot as Abishnoi
+from AsuXMusic import call_py
+from AsuXMusic.config import IMG_1, IMG_2, IMG_5
+
 
 def ytsearch(query):
     try:
@@ -46,17 +33,20 @@ def ytsearch(query):
 
 
 async def ytdl(format: str, link: str):
-    stdout, stderr = await bash(f'yt-dlp --geo-bypass -g -f "[height<=?720][width<=?1280]" {link}')
+    stdout, stderr = await bash(
+        f'yt-dlp --geo-bypass -g -f "[height<=?720][width<=?1280]" {link}'
+    )
     if stdout:
         return 1, stdout.split("\n")[0]
     return 0, stderr
+
 
 chat_id = None
 DISABLED_GROUPS = []
 useer = "NaN"
 ACTV_CALLS = []
 
-    
+
 @Abishnoi.on_message(command(["play", f"play@{BOT_USERNAME}"]) & other_filters)
 async def play(c: Abishnoi, m: Message):
     # await m.delete()
@@ -65,7 +55,9 @@ async def play(c: Abishnoi, m: Message):
     user_id = m.from_user.id
     buttons = audio_markup(user_id)
     if m.sender_chat:
-        return await m.reply_text("ʏᴏᴜ'ʀᴇ ᴀɴ __ᴀɴᴏɴʏᴍᴏᴜs__ ᴀᴅᴍɪɴ !\n\n» ʀᴇᴠᴇʀᴛ ʙᴀᴄᴋ ᴛᴏ ᴜsᴇʀ ᴀᴄᴄᴏᴜɴᴛ ғʀᴏᴍ ᴀᴅᴍɪɴ ʀɪɢʜᴛs.")
+        return await m.reply_text(
+            "ʏᴏᴜ'ʀᴇ ᴀɴ __ᴀɴᴏɴʏᴍᴏᴜs__ ᴀᴅᴍɪɴ !\n\n» ʀᴇᴠᴇʀᴛ ʙᴀᴄᴋ ᴛᴏ ᴜsᴇʀ ᴀᴄᴄᴏᴜɴᴛ ғʀᴏᴍ ᴀᴅᴍɪɴ ʀɪɢʜᴛs."
+        )
     try:
         aing = await c.get_me()
     except Exception as e:
@@ -106,9 +98,7 @@ async def play(c: Abishnoi, m: Message):
                 return
         else:
             try:
-                invitelink = await c.export_chat_invite_link(
-                    m.chat.id
-                )
+                invitelink = await c.export_chat_invite_link(m.chat.id)
                 if invitelink.startswith("https://t.me/+"):
                     invitelink = invitelink.replace(
                         "https://t.me/+", "https://t.me/joinchat/"
@@ -128,7 +118,7 @@ async def play(c: Abishnoi, m: Message):
             if replied.audio:
                 if replied.audio.title:
                     songname = replied.audio.title[:70]
-                else: 
+                else:
                     if replied.audio.file_name:
                         songname = replied.audio.file_name[:70]
                     else:
@@ -144,44 +134,46 @@ async def play(c: Abishnoi, m: Message):
                     reply_markup=InlineKeyboardMarkup(buttons),
                 )
             else:
-             try:
-                await call_py.join_group_call(
-                    chat_id,
-                    AudioPiped(
-                        dl,
-                    ),
-                    stream_type=StreamType().local_stream,
-                )
-                add_to_queue(chat_id, songname, dl, link, "Audio", 0)
-                await suhu.delete()
-                requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
-                await m.reply_photo(
-                    photo=f"{IMG_2}",
-                    caption=f"🏷 **ɴᴀᴍᴇ:** [{songname}]({link})\n💭 **ᴄʜᴀᴛ:** `{chat_id}`\n💡 **sᴛᴀᴛᴜs:** `ᴘʟᴀʏɪɴɢ`\n🎧 **ʀᴇǫᴜᴇsᴛ ʙʏ:** {requester}\n📹 **sᴛʀᴇᴀᴍ ᴛʏᴘᴇ:** `ᴍᴜsɪᴄ`",
-                    reply_markup=InlineKeyboardMarkup(buttons),
-                )
-             except Exception as e:
-                await suhu.delete()
-                await m.reply_text(f"🚫 ᴇʀʀᴏʀ:\n\n» {e}")
-        
+                try:
+                    await call_py.join_group_call(
+                        chat_id,
+                        AudioPiped(
+                            dl,
+                        ),
+                        stream_type=StreamType().local_stream,
+                    )
+                    add_to_queue(chat_id, songname, dl, link, "Audio", 0)
+                    await suhu.delete()
+                    requester = (
+                        f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
+                    )
+                    await m.reply_photo(
+                        photo=f"{IMG_2}",
+                        caption=f"🏷 **ɴᴀᴍᴇ:** [{songname}]({link})\n💭 **ᴄʜᴀᴛ:** `{chat_id}`\n💡 **sᴛᴀᴛᴜs:** `ᴘʟᴀʏɪɴɢ`\n🎧 **ʀᴇǫᴜᴇsᴛ ʙʏ:** {requester}\n📹 **sᴛʀᴇᴀᴍ ᴛʏᴘᴇ:** `ᴍᴜsɪᴄ`",
+                        reply_markup=InlineKeyboardMarkup(buttons),
+                    )
+                except Exception as e:
+                    await suhu.delete()
+                    await m.reply_text(f"🚫 ᴇʀʀᴏʀ:\n\n» {e}")
+
     else:
         if len(m.command) < 2:
-         await m.reply_photo(
-                     photo=f"{IMG_5}",
-                    caption="**ᴜsᴀɢᴇ: /play ɢɪᴠᴇ ᴀ ᴛɪᴛʟᴇ sᴏɴɢ ᴛᴏ ᴘʟᴀʏ ᴍᴜsɪᴄ**",
-                      reply_markup=InlineKeyboardMarkup(
+            await m.reply_photo(
+                photo=f"{IMG_5}",
+                caption="**ᴜsᴀɢᴇ: /play ɢɪᴠᴇ ᴀ ᴛɪᴛʟᴇ sᴏɴɢ ᴛᴏ ᴘʟᴀʏ ᴍᴜsɪᴄ**",
+                reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton("• sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/AbishnoiMF"),
-                            InlineKeyboardButton("• ᴄʟᴏsᴇ", callback_data="cls")
+                            InlineKeyboardButton(
+                                "• sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/AbishnoiMF"
+                            ),
+                            InlineKeyboardButton("• ᴄʟᴏsᴇ", callback_data="cls"),
                         ]
                     ]
-                )
+                ),
             )
         else:
-            suhu = await m.reply_text(
-        f"**ᴇxᴏɴ ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ**\n\n100% ▓▓▓▓▓▓▓▓▓▓▓▓ 00%"
-    )
+            suhu = await m.reply_text(f"**ᴇxᴏɴ ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ**\n\n100% ▓▓▓▓▓▓▓▓▓▓▓▓ 00%")
             query = m.text.split(None, 1)[1]
             search = ytsearch(query)
             if search == 0:
@@ -201,8 +193,8 @@ async def play(c: Abishnoi, m: Message):
                 playimg = await play_thumb(videoid)
                 queueimg = await queue_thumb(videoid)
                 await suhu.edit(
-                            f"**ᴇxᴏɴ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ**\n\n**ᴛɪᴛʟᴇ**: {title[:22]}\n\n100% ▓▓▓▓▓▓▓▓▓▓▓▓0%\n\n**ᴛɪᴍᴇ ᴛᴀᴋᴇɴ**: 00:00 sᴇᴄᴏɴᴅs\n\n**ᴄᴏɴᴠᴇʀᴛɪɴɢ ᴀᴜᴅɪᴏ[ғғᴍᴘᴇɢ ᴘʀᴏᴄᴇss]**"
-                        )
+                    f"**ᴇxᴏɴ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ**\n\n**ᴛɪᴛʟᴇ**: {title[:22]}\n\n100% ▓▓▓▓▓▓▓▓▓▓▓▓0%\n\n**ᴛɪᴍᴇ ᴛᴀᴋᴇɴ**: 00:00 sᴇᴄᴏɴᴅs\n\n**ᴄᴏɴᴠᴇʀᴛɪɴɢ ᴀᴜᴅɪᴏ[ғғᴍᴘᴇɢ ᴘʀᴏᴄᴇss]**"
+                )
                 format = "bestaudio"
                 abhi, ytlink = await ytdl(format, url)
                 if abhi == 0:
@@ -222,24 +214,16 @@ async def play(c: Abishnoi, m: Message):
                     else:
                         try:
                             await suhu.edit(
-                            f"**ᴇxᴏɴ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ**\n\n**ᴛɪᴛʟᴇ**: {title[:22]}\n\n0% ████████████100%\n\n**ᴛɪᴍᴇ ᴛᴀᴋᴇɴ**: 00:00 sᴇᴄᴏɴᴅs\n\n**ᴄᴏɴᴠᴇʀᴛɪɴɢ ᴀᴜᴅɪᴏ[ғғᴍᴘᴇɢ ᴘʀᴏᴄᴇss]**"
-                        )
+                                f"**ᴇxᴏɴ ᴅᴏᴡɴʟᴏᴀᴅᴇʀ**\n\n**ᴛɪᴛʟᴇ**: {title[:22]}\n\n0% ████████████100%\n\n**ᴛɪᴍᴇ ᴛᴀᴋᴇɴ**: 00:00 sᴇᴄᴏɴᴅs\n\n**ᴄᴏɴᴠᴇʀᴛɪɴɢ ᴀᴜᴅɪᴏ[ғғᴍᴘᴇɢ ᴘʀᴏᴄᴇss]**"
+                            )
                             await call_py.join_group_call(
-
                                 chat_id,
-
                                 AudioImagePiped(
-
-                                          ytlink,
-
-                                          playimg,
-
-                               video_parameters=MediumQualityVideo(),
-
-                            ),
-
-                               stream_type=StreamType().local_stream,
-
+                                    ytlink,
+                                    playimg,
+                                    video_parameters=MediumQualityVideo(),
+                                ),
+                                stream_type=StreamType().local_stream,
                             )
 
                             add_to_queue(chat_id, songname, ytlink, url, "Audio", 0)

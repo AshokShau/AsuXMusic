@@ -1,6 +1,9 @@
 import asyncio
+
 from pytgcalls import idle
-from AsuXMusic import call_py, bot
+
+from AsuXMusic import bot, call_py
+
 
 async def start_bot():
     print("[INFO]: STARTING BOT CLIENT")

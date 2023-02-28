@@ -1,33 +1,27 @@
-import os
 import asyncio
-from AsuXMusic import bot, call_py
+
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pytgcalls.types import Update
 from pytgcalls.types.input_stream import AudioPiped, AudioVideoPiped
-from AsuX.queues import QUEUE, clear_queue, get_queue, pop_an_item
 from pytgcalls.types.input_stream.quality import (
     HighQualityAudio,
     HighQualityVideo,
     LowQualityVideo,
     MediumQualityVideo,
 )
-from pyrogram.types import (
-    CallbackQuery,
-    InlineKeyboardButton,
-    InlineKeyboardMarkup,
-    Message,
-)
-from pyrogram import Client, filters
-from pytgcalls.types.stream import StreamAudioEnded, StreamVideoEnded
+from pytgcalls.types.stream import StreamAudioEnded
 
+from AsuX.queues import QUEUE, clear_queue, get_queue, pop_an_item
+from AsuXMusic import bot, call_py
 
 keyboard = InlineKeyboardMarkup(
+    [
         [
-            [
-                InlineKeyboardButton(text="• ᴍᴇɴᴜ", callback_data="cbmenu"),
-                InlineKeyboardButton(text="• ᴄʟᴏsᴇ", callback_data="cls"),
-            ]
+            InlineKeyboardButton(text="• ᴍᴇɴᴜ", callback_data="cbmenu"),
+            InlineKeyboardButton(text="• ᴄʟᴏsᴇ", callback_data="cls"),
         ]
-    )
+    ]
+)
 
 
 async def skip_current_song(chat_id):
@@ -110,14 +104,24 @@ async def stream_end_handler(_, u: Update):
         chat_id = u.chat_id
         print(chat_id)
         op = await skip_current_song(chat_id)
-        if op==1:
-           await bot.send_message(chat_id, "✅ **ᴜsᴇʀʙᴏᴛ ʜᴀs ᴅɪsᴄᴏɴɴᴇᴄᴛᴇᴅ ғʀᴏᴍ ᴠɪᴅᴇᴏ ᴄʜᴀᴛ.**")
-        elif op==2:
-           await bot.send_message(chat_id, "❌ **ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ**\n\n» **ᴄʟᴇᴀʀɪɴɢ** __ǫᴜᴇᴜᴇs__ **ᴀɴᴅ ʟᴇᴀᴠɪɴɢ ᴠɪᴅᴇᴏ ᴄʜᴀᴛ.**")
+        if op == 1:
+            await bot.send_message(
+                chat_id, "✅ **ᴜsᴇʀʙᴏᴛ ʜᴀs ᴅɪsᴄᴏɴɴᴇᴄᴛᴇᴅ ғʀᴏᴍ ᴠɪᴅᴇᴏ ᴄʜᴀᴛ.**"
+            )
+        elif op == 2:
+            await bot.send_message(
+                chat_id,
+                "❌ **ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ**\n\n» **ᴄʟᴇᴀʀɪɴɢ** __ǫᴜᴇᴜᴇs__ **ᴀɴᴅ ʟᴇᴀᴠɪɴɢ ᴠɪᴅᴇᴏ ᴄʜᴀᴛ.**",
+            )
         else:
-         await bot.send_message(chat_id, f"💡 **sᴛʀᴇᴀᴍɪɴɢ ɴᴇxᴛ ᴛʀᴀᴄᴋ**\n\n🏷 **ɴᴀᴍᴇ:** [{op[0]}]({op[1]}) | `{op[2]}`\n💭 **ᴄʜᴀᴛ:** `{chat_id}`", disable_web_page_preview=True, reply_markup=keyboard)
+            await bot.send_message(
+                chat_id,
+                f"💡 **sᴛʀᴇᴀᴍɪɴɢ ɴᴇxᴛ ᴛʀᴀᴄᴋ**\n\n🏷 **ɴᴀᴍᴇ:** [{op[0]}]({op[1]}) | `{op[2]}`\n💭 **ᴄʜᴀᴛ:** `{chat_id}`",
+                disable_web_page_preview=True,
+                reply_markup=keyboard,
+            )
     else:
-       pass
+        pass
 
 
 async def bash(cmd):

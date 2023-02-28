@@ -1,7 +1,6 @@
-from typing import List
-from pyrogram.types import Chat
-
 from typing import Dict, List
+
+from pyrogram.types import Chat
 
 admins: Dict[int, List[int]] = {}
 
@@ -14,7 +13,6 @@ def gett(chat_id: int) -> List[int]:
     if chat_id in admins:
         return admins[chat_id]
     return []
-
 
 
 async def get_administrators(chat: Chat) -> List[int]:

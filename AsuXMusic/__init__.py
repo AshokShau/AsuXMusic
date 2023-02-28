@@ -1,6 +1,7 @@
 from pyrogram import Client
-from AsuXMusic.config import API_ID, API_HASH, BOT_TOKEN, SESSION_NAME
 from pytgcalls import PyTgCalls, idle
+
+from AsuXMusic.config import API_HASH, API_ID, BOT_TOKEN, SESSION_NAME
 
 bot = Client(
     "AsuXMusic",
@@ -8,18 +9,19 @@ bot = Client(
     API_HASH,
     bot_token=BOT_TOKEN,
     plugins=dict(root="AsuXMusic.Modules"),
-    )
+)
 
 Abishnoi = Client(
     api_id=API_ID,
     api_hash=API_HASH,
     session_name=SESSION_NAME,
-    
-    )
+)
 
-user = PyTgCalls(Abishnoi,
+user = PyTgCalls(
+    Abishnoi,
     cache_duration=100,
-    overload_quiet_mode=True,)
+    overload_quiet_mode=True,
+)
 
 call_py = PyTgCalls(Abishnoi, overload_quiet_mode=True)
 
