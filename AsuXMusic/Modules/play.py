@@ -27,7 +27,7 @@ from pytgcalls import StreamType
 from pytgcalls.types.input_stream.quality import MediumQualityVideo
 from pytgcalls.types.input_stream import AudioImagePiped, AudioVideoPiped
 from youtubesearchpython import VideosSearch
-from AsuX.design.thumbnail import play_thumb, queue_thumb
+from AsuX.thumbnail import play_thumb, queue_thumb
 from AsuX.inline import stream_markup, audio_markup
 
 def ytsearch(query):
