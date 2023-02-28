@@ -11,11 +11,11 @@ from AsuXMusic.config import GROUP_SUPPORT, UPDATES_CHANNEL
 START_TIME = datetime.utcnow()
 START_TIME_ISO = START_TIME.replace(microsecond=0).isoformat()
 TIME_DURATION_UNITS = (
-    ("week", 60 * 60 * 24 * 7),
-    ("day", 60**2 * 24),
-    ("hour", 60**2),
-    ("min", 60),
-    ("sec", 1),
+    ("ᴡᴇᴇᴋs", 60 * 60 * 24 * 7),
+    ("ᴅᴀʏ", 60**2 * 24),
+    ("ʜᴏᴜʀ", 60**2),
+    ("ᴍɪɴ", 60),
+    ("sᴇᴄ", 1),
 )
 
 
@@ -59,8 +59,8 @@ async def start(client: Abishnoi, message: Message):
 @Abishnoi.on_message(command(["start", "help"]) & ~filters.group)
 async def start(_, message: Message):
     await message.reply_text(
-        f"""ʜᴇʟʏ {message.from_user.mention()}, 
-                  ᴍʏ ɴᴀᴍᴇ ɪs {BOT_NAME}.
+        f"""ʜᴇʏ {message.from_user.mention()}, 
+               ᴍʏ ɴᴀᴍᴇ ɪs {BOT_NAME}.
 ๏ ᴀ ғᴀsᴛ ᴀɴᴅ ᴩᴏᴡᴇʀғᴜʟ ᴍᴜsɪᴄ ᴩʟᴀʏᴇʀ ʙᴏᴛ ᴡɪᴛʜ sᴏᴍᴇ ᴀᴡᴇsᴏᴍᴇ ғᴇᴀᴛᴜʀᴇs.
 ๏ ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʜᴇʟᴩ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ᴛᴏ ɢᴇᴛ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴍʏ ᴄᴏᴍᴍᴀɴᴅs..
         """,
