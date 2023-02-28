@@ -9,7 +9,7 @@ bot = Client(
     API_ID,
     API_HASH,
     bot_token=BOT_TOKEN,
-    plugins=dict(root="AsuXMusic.*"),
+    plugins=dict(root="AsuXMusic.Modules"),
 )
 
 Abishnoi = Client(
