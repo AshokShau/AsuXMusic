@@ -24,7 +24,7 @@ user = PyTgCalls(Abishnoi,
 call_py = PyTgCalls(Abishnoi, overload_quiet_mode=True)
 
 
-getme = app.get_me()
+getme = bot.get_me()
 getass = Abishnoi.get_me()
 BOT_NAME = getme.first_name
 BOT_USERNAME = getme.username
