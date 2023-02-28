@@ -1,22 +1,19 @@
-from pyrogram import filters
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-from AsuXMusic import BOT_NAME, BOT_USERNAME, OWNER_NAME, ASSISTANT_USERNAME, bot as Abishnoi
-from AsuXMusic.config import (
-    GROUP_SUPPORT,
-    UPDATES_CHANNEL,
-)
-from AsuX.filters import other_filters2
-from time import time
-from Process.filters import command
 from datetime import datetime
-from AsuX.decorators import authorized_users_only
+
+from Process.filters import command
+from pyrogram import filters
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
+
+from AsuXMusic import BOT_NAME, BOT_USERNAME
+from AsuXMusic import bot as Abishnoi
+from AsuXMusic.config import GROUP_SUPPORT, UPDATES_CHANNEL
 
 START_TIME = datetime.utcnow()
 START_TIME_ISO = START_TIME.replace(microsecond=0).isoformat()
 TIME_DURATION_UNITS = (
     ("week", 60 * 60 * 24 * 7),
-    ("day", 60 ** 2 * 24),
-    ("hour", 60 ** 2),
+    ("day", 60**2 * 24),
+    ("hour", 60**2),
     ("min", 60),
     ("sec", 1),
 )
@@ -35,7 +32,7 @@ async def _human_time_duration(seconds):
 
 @Abishnoi.on_message(command(["start", "help"]) & ~filters.group)
 async def start(_, message: Message):
-        await message.reply_text(
+    await message.reply_text(
         f"""ʜᴇʟʏ {message.from_user.mention()}, 
                   ᴍʏ ɴᴀᴍᴇ ɪs {BOT_NAME}.
 ๏ ᴀ ғᴀsᴛ ᴀɴᴅ ᴩᴏᴡᴇʀғᴜʟ ᴍᴜsɪᴄ ᴩʟᴀʏᴇʀ ʙᴏᴛ ᴡɪᴛʜ sᴏᴍᴇ ᴀᴡᴇsᴏᴍᴇ ғᴇᴀᴛᴜʀᴇs.
@@ -43,31 +40,29 @@ async def start(_, message: Message):
         """,
         reply_markup=InlineKeyboardMarkup(
             [
-                [                   
+                [
+                    InlineKeyboardButton("ᴄᴏᴍᴍᴀɴᴅs ❔", callback_data="cbbasic"),
+                ],
+                [
+                    InlineKeyboardButton("ʜᴏᴡ ᴛᴏ ᴜsᴇ ᴍᴇ ❓", callback_data="cbhowtouse"),
+                ],
+                [
                     InlineKeyboardButton(
-                        "ᴄᴏᴍᴍᴀɴᴅs ❔", callback_data="cbbasic"
+                        "ᴜᴘᴅᴀᴛᴇs", url=f"https://t.me/{UPDATES_CHANNEL}"
+                    ),
+                    InlineKeyboardButton(
+                        "sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
                 ],
                 [
                     InlineKeyboardButton(
-                        "ʜᴏᴡ ᴛᴏ ᴜsᴇ ᴍᴇ ❓", callback_data="cbhowtouse"
-                    ),
-                  ],[
-                    InlineKeyboardButton(
-                       "ᴜᴘᴅᴀᴛᴇs", url=f"https://t.me/{UPDATES_CHANNEL}"
-                    ),
-                    InlineKeyboardButton(
-                       "sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{GROUP_SUPPORT}"
-                    )
-                ],[
-                    InlineKeyboardButton(
                         "➕ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ᴄʜᴀᴛ ➕",
                         url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
                     )
-                ]
+                ],
             ]
         ),
-     disable_web_page_preview=True
+        disable_web_page_preview=True,
     )
 
 
@@ -80,7 +75,8 @@ async def help(client: Abishnoi, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        " ʀᴇᴘᴏ ⚒️", url=f"https://github.com/Abishnoi69/AsuXMusic")
+                        " ʀᴇᴘᴏ ⚒️", url=f"https://github.com/Abishnoi69/AsuXMusic"
+                    )
                 ]
             ]
         ),

@@ -1,15 +1,16 @@
-import asyncio
-from AsuXMusic import BOT_UEERNAME, bot as Abishnoi
-from AsuXMusic.config import SUDO_USERS
-from AsuX import authorized_users_only, sudo_users_only, errors
-from AsuX.filters import command, other_filters
-from AsuXMusic import user as USER
 from pyrogram import filters
 from pyrogram.errors import UserAlreadyParticipant
 
+from AsuX import authorized_users_only, errors
+from AsuX.filters import command
+from AsuXMusic import bot as Abishnoi
+from AsuXMusic import user as USER
+
 
 @Abishnoi.on_message(
-    command(["userbotjoin", f"userbotjoin@{BOT_USERNAME}"]) & ~filters.private & ~filters.bot
+    command(["userbotjoin", f"userbotjoin@{BOT_USERNAME}"])
+    & ~filters.private
+    & ~filters.bot
 )
 @authorized_users_only
 @errors
@@ -44,8 +45,9 @@ async def join_group(client, message):
     )
 
 
-@Abishnoi.on_message(command(["userbotleave",
-                            f"leave@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
+@Abishnoi.on_message(
+    command(["userbotleave", f"leave@{BOT_USERNAME}"]) & filters.group & ~filters.edited
+)
 @authorized_users_only
 async def leave_one(client, message):
     try:
@@ -57,5 +59,3 @@ async def leave_one(client, message):
         )
 
         return
-
-
