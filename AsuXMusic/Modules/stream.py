@@ -6,8 +6,12 @@ from AsuX.filters import command, other_filters
 from AsuX.queues import QUEUE, clear_queue
 from AsuXMusic import bot as Abishnoi
 from AsuX.utils import skip_current_song, skip_item
-from AsuXMusic import import BOT_USERNAME
-from RaiChu.config import GROUP_SUPPORT, IMG_3, UPDATES_CHANNEL, IMG_5
+
+
+
+
+from AsuXMusic import BOT_USERNAME
+from AsuXMusic.config import GROUP_SUPPORT, IMG_3, UPDATES_CHANNEL, IMG_5
 from pyrogram.types import (
     CallbackQuery,
     InlineKeyboardButton,
