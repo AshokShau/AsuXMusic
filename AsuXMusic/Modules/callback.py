@@ -1,5 +1,5 @@
 import yt_dlp
-from Process.queues import QUEUE
+from AsuX.queues import QUEUE
 from pyrogram import Client, filters
 from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
 from AsuXMusic import ASSISTANT_USERNAME, BOT_NAME, BOT_USERNAME, OWNER_NAME
