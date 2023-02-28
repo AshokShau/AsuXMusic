@@ -76,10 +76,7 @@ v<h2 align="center">
 
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
-
-## 2 ʙʀᴀɴᴄʜ 
-1. ᴍᴀɪɴ ʙʀᴀɴᴄʜ :- ғᴏʀ sᴛᴀʀᴛ ᴀɴɢ ʜᴇʟᴘ ᴄᴏᴍᴍᴀɴᴅ ᴇɴᴀʙʟᴇ
-2. ᴍᴀsᴛᴇʀ ʙʀᴀɴᴄʜ :- ғᴏʀ sᴛᴀʀᴛ  ᴀɴᴅ ʜᴇʟᴘ ᴄᴏᴍᴍᴀɴɢ ᴅɪsᴀʙʟᴇ 
+ 
 
 
 
