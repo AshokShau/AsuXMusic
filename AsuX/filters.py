@@ -1,6 +1,6 @@
 from pyrogram import filters
 from typing import List, Union
-from AsuXMusic.config import COMMAND_PREFIXES
+COMMAND_PREFIXES = "/"
 
 
 other_filters = filters.group & ~filters.edited & ~filters.via_bot & ~filters.forwarded
