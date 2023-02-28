@@ -5,7 +5,7 @@ from AsuXMusic.config import API_HASH, API_ID, BOT_TOKEN, SESSION_NAME
 from AsuXMusic.Modules import ALL_MODULES
 
 bot = Client(
-    "AsuXMusic", API_ID, API_HASH, bot_token=BOT_TOKEN, plugins=dict(str(ALL_MODULES))
+    "AsuXMusic", API_ID, API_HASH, bot_token=BOT_TOKEN, plugins=dict(root="AsuXMusic.*"),
 )
 
 Abishnoi = Client(
