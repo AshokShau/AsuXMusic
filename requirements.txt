@@ -14,7 +14,6 @@ py-tgcalls==0.8.1
 pyrogram==1.4.16
 requests
 rich
-speedtest-cli
 tgcrypto
 git+https://github.com/yt-dlp/yt-dlp@master
 git+https://github.com/joetats/youtube_search@master
