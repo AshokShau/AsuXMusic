@@ -11,22 +11,7 @@
       "value": "",
       "required": true
     },
-    "LOGGER_ID": {
-      "description": "ᴄʜᴀᴛ ɪᴅ ᴏғ ᴀ ɢʀᴏᴜᴘ ᴡʜᴇʀᴇ ʏᴏᴜ'ʟʟ ɢᴇᴛ ᴛᴏ ᴋɴᴏᴡ ᴛʜᴀᴛ ʏᴏᴜʀ ʙᴏᴛ ɢᴏᴛ sᴛᴀʀᴛᴇᴅ  -1001376267876 .",
-      "required": true,
-      "value": "-100........"
-    },
-    "OWNER_ID": {
-      "description": "ʏᴏᴜʀ ᴛɢ ɪᴅ",
-      "required": true,
-      "value": "........"
-    },
-    "MONGO_DB_URI": {
-      "description": "ᴀ ᴍᴏɴɢᴏᴅʙ ᴄʟᴏᴜᴅ ᴅᴀᴛᴀʙᴀsᴇ ᴜʀʟ ғʀᴏᴍ cloud.mongodb.com",
-      "value": "mongodb+srv://EXONTESTMONGO:EXONTESTMONGO@cluster0.bviw7ic.mongodb.net/?retryWrites=true&w=majority",
-      "required": true
-    },
-    "STRING_SESSION": {
+    "SESSION_NAME": {
       "description": "ᴘʏʀᴏɢʀᴀᴍ- v1 sᴛʀɪɴɢ sᴇssɪᴏɴ ᴏғ ᴀssɪsᴛᴀɴᴛ ᴀᴄᴄᴏᴜɴᴛ",
       "required": true,
       "value": ""
