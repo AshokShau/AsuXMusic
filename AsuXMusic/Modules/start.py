@@ -35,7 +35,7 @@ async def _human_time_duration(seconds):
     & filters.group
     & ~filters.edited
 )
-async def start(client: Client, message: Message):
+async def start(client: Abishnoi, message: Message):
     current_time = datetime.utcnow()
     uptime_sec = (current_time - START_TIME).total_seconds()
     uptime = await _human_time_duration(int(uptime_sec))
