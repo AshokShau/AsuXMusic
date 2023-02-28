@@ -10,7 +10,7 @@ bot = Client(
     plugins=dict(root="AsuXMusic.Modules"),
     )
 
-bot.start()
+
 
 Abishnoi = Client(
     api_id=API_ID,
@@ -26,12 +26,11 @@ user = PyTgCalls(Abishnoi,
 call_py = PyTgCalls(Abishnoi, overload_quiet_mode=True)
 
 
-getme = bot.get_me()
-getass = Abishnoi.get_me()
-BOT_NAME = getme.first_name
-BOT_USERNAME = getme.username
 
-ASSISTANT_USERNAME = getass.username
+BOT_NAME = "ᴇxᴏɴ" #getme.first_name
+BOT_USERNAME = "Exon_Robot" #.username
+
+ASSISTANT_USERNAME = "ExonMusicbot"
 
 """
 with Client("AsuXMusic", API_ID, API_HASH, bot_token=BOT_TOKEN) as app:
