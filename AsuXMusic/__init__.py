@@ -23,7 +23,17 @@ user = PyTgCalls(Abishnoi,
 
 call_py = PyTgCalls(Abishnoi, overload_quiet_mode=True)
 
+
+getme = await app.get_me()
+getass = await Abishnoi.get_me()
+BOT_NAME = getme.first_name
+BOT_USERNAME = getme.username
+
+ASSISTANT_USERNAME = getass.username
+
+"""
 with Client("AsuXMusic", API_ID, API_HASH, bot_token=BOT_TOKEN) as app:
     me_bot = app.get_me()
 with Abishnoi as app:
     akboss = app.get_me()# ABISHNOI1M
+"""
