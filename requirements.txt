@@ -21,7 +21,5 @@ psutil
 future
 wget
 pyyaml==5.3.1
-speedtest-cli
-telegraph
 python-arq
 bs4
