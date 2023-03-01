@@ -37,7 +37,3 @@ with Client("AsuXMusic", API_ID, API_HASH, bot_token=BOT_TOKEN) as app:
 with Abishnoi as ass:
     getass = ass.get_me()
     ASSISTANT_USERNAME = getass.username
-
-print("ɪɴғᴏ: ʙᴏᴛᴛɪɴɢ ʏᴏᴜʀ ᴄʟɪᴇɴᴛ")
-print("sᴜᴄᴄᴇssғᴜʟʟʏ ʟᴏᴀᴅᴇᴅ ᴍᴏᴅᴜʟᴇs -: " + str(ALL_MODULES))
-print(f"ɪɴғᴏ: ʙᴏᴛᴛɪɴɢ ʏᴏᴜʀ ᴄʟɪᴇɴᴛ ᴀs -: {BOT_USERNAME} ")
