@@ -3,7 +3,8 @@ import importlib
 
 from pytgcalls import idle
 
-from AsuXMusic import BOT_USERNAME, bot, call_py
+from AsuXMusic import BOT_USERNAME, bot, call_py, BOT_NAME
+from AsuXMusic.config import GROUP_SUPPORT
 from AsuXMusic.Modules import ALL_MODULES
 
 loop = asyncio.get_event_loop()
@@ -12,14 +13,16 @@ loop = asyncio.get_event_loop()
 async def AsuX_boot():
     for all_module in ALL_MODULES:
         importlib.import_module("AsuXMusic.Modules." + all_module)
-    print("[INFO]: STARTING BOT CLIENT")
     await bot.start()
-    print("[INFO]: STARTING PYTGCALLS CLIENT")
     await call_py.start()
     await idle()
-    print("[INFO]: STOPPING BOT & USERBOT")
+    try:
+        await call_py.send_message(f"@{GROUP_SUPPORT}"\n, f"{BOT_NAME} ᴍᴜsɪᴄ sᴛᴀʀᴛᴇᴅ}")
+    except Exception as e:
+      print(e)
+    print(f"ɢᴏᴏᴅʙʏᴇ!\nStopping @{BOT_USERNAME}")
     await bot.stop()
-    print(f"GoodBye!\nStopping @{BOT_USERNAME}")
+    
 
 
 if __name__ == "__main__":
