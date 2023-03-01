@@ -16,9 +16,9 @@ async def AsuX_boot():
     await bot.start()
     await call_py.start()
     await idle()
-    try:
-       await call_py.send_message(f"@{GROUP_SUPPORT}", f"{BOT_NAME} ᴍᴜsɪᴄ sᴛᴀʀᴛᴇᴅ}")
-    except Exception as e:
+   try:
+      await call_py.send_message(f"@{GROUP_SUPPORT}", f"{BOT_NAME} ᴍᴜsɪᴄ sᴛᴀʀᴛᴇᴅ}")
+   except Exception as e:
       print(e)
     print(f"ɢᴏᴏᴅʙʏᴇ!\nStopping @{BOT_USERNAME}")
     await bot.stop()
