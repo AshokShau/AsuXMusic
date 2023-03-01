@@ -1,6 +1,6 @@
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from youtubesearchpython import VideosSearch
-
+from AsuXMusic.config import GROUP_SUPPORT as AbishnoiMF
 
 def ytsearch(query):
     try:
@@ -20,11 +20,12 @@ def ytsearch(query):
 def audio_markup(user_id):
     buttons = [
         [
-            InlineKeyboardButton(text="• Mᴇɴᴜ", callback_data=f"cbmenu | {user_id}"),
-            InlineKeyboardButton(text="• Iɴʟɪɴᴇ", switch_inline_query_current_chat=""),
+            InlineKeyboardButton(text="• ᴍᴇɴᴜ", callback_data=f"cbmenu | {user_id}"),
+            InlineKeyboardButton(text="• ɪɴʟɪɴᴇ", switch_inline_query_current_chat=""),
         ],
         [
-            InlineKeyboardButton(text="• Cʟᴏsᴇ", callback_data=f"cls"),
+            InlineKeyboardButton(text="• ᴜᴩᴅᴀᴛᴇs", url=f"https://t.me/{AbishnoiMF}"),
+            InlineKeyboardButton(text="• ᴄʟᴏsᴇ", callback_data=f"cls"),
         ],
     ]
     return buttons
@@ -43,6 +44,7 @@ def stream_markup(user_id, dlurl):
             InlineKeyboardButton(text="• ʏᴏᴜᴛᴜʙᴇ •", url=f"{dlurl}"),
         ],
         [
+            InlineKeyboardButton(text="ᴜᴩᴅᴀᴛᴇs", url=f"https://t.me/{AbishnoiMF}"),
             InlineKeyboardButton(text="ᴄʟᴏsᴇ", callback_data=f"cls"),
         ],
     ]
@@ -61,7 +63,7 @@ def menu_markup(user_id):
         ],
         [
             InlineKeyboardButton(text="🔇", callback_data=f"cbmute | {user_id}"),
-            InlineKeyboardButton(text="ᴜᴩᴅᴀᴛᴇs", url=f"https://t.me/AbishnoiMF"),
+            InlineKeyboardButton(text="🏡", url=f"https://t.me/{AbishnoiMF}"),
             InlineKeyboardButton(text="🔊", callback_data=f"cbunmute | {user_id}"),
         ],
     ]
@@ -81,6 +83,7 @@ def song_download_markup(videoid):
             ),
         ],
         [
+            InlineKeyboardButton(text="• ᴜᴩᴅᴀᴛᴇs", url=f"https://t.me/{AbishnoiMF}"),
             InlineKeyboardButton(
                 text="ʙᴀᴄᴋ",
                 callback_data="cbhome",
