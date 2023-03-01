@@ -3,8 +3,7 @@ import importlib
 
 from pytgcalls import idle
 
-from AsuXMusic import BOT_USERNAME, bot, call_py, BOT_NAME
-from AsuXMusic.config import GROUP_SUPPORT
+from AsuXMusic import BOT_USERNAME, bot, call_py
 from AsuXMusic.Modules import ALL_MODULES
 
 loop = asyncio.get_event_loop()
@@ -18,7 +17,6 @@ async def AsuX_boot():
     await idle()
     print(f"ɢᴏᴏᴅʙʏᴇ!\nStopping @{BOT_USERNAME}")
     await bot.stop()
-    
 
 
 if __name__ == "__main__":
