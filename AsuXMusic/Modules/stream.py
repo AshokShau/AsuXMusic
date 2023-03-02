@@ -14,7 +14,7 @@ from AsuX.utils import skip_current_song, skip_item
 from AsuXMusic import BOT_USERNAME
 from AsuXMusic import bot as Abishnoi
 from AsuXMusic import call_py
-from AsuXMusic.config import IMG_3, IMG_5, GROUP_SUPPORT as AbishnoiMF
+from AsuXMusic.config import IMG_3, IMG_5
 
 bttn = InlineKeyboardMarkup(
     [[InlineKeyboardButton("🔙 ɢᴏ ʙᴀᴄᴋ", callback_data="cbmenu")]]
