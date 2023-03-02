@@ -12,7 +12,7 @@ from youtubesearchpython import VideosSearch
 
 from AsuX.inline import menu_markup, song_download_markup, stream_markup
 from AsuX.queues import QUEUE
-from AsuXMusic import ASSISTANT_USERNAME, BOT_NAME, BOT_USERNAME
+from AsuXMusic import ASSISTANT_USERNAME, BOT_NAME, BOT_USERNAME, F_OWNER
 from AsuXMusic import bot as Client
 from AsuXMusic.config import GROUP_SUPPORT, UPDATES_CHANNEL
 
@@ -95,23 +95,27 @@ async def cbstart(_, query: CallbackQuery):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("ᴄᴏᴍᴍᴀɴᴅs & ʜᴇʟᴘ ❔", callback_data="cbbasic"),
-                ],
-                [
-                    InlineKeyboardButton("ʜᴏᴡ ᴛᴏ ᴜsᴇ ᴍᴇ ❓", callback_data="cbhowtouse"),
-                ],
-                [
                     InlineKeyboardButton(
-                        "ᴜᴘᴅᴀᴛᴇs", url=f"https://t.me/{UPDATES_CHANNEL}"
-                    ),
-                    InlineKeyboardButton(
-                        "sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{GROUP_SUPPORT}"
-                    ),
-                ],
-                [
-                    InlineKeyboardButton(
-                        "➕ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ➕",
+                        text="ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴩ",
                         url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
+                    ),
+                ],
+                [
+                    InlineKeyboardButton(text="❄ ʜᴇʟᴩ ❄", callback_data="cbbasic"),
+                    InlineKeyboardButton(text="🥀 ᴏᴡɴᴇʀ 🥀", user_id=F_OWNER),
+                ],
+                [
+                    InlineKeyboardButton(
+                        text="✨ sᴜᴩᴩᴏʀᴛ ✨", url=f"https://t.me/{GROUP_SUPPORT}"
+                    ),
+                    InlineKeyboardButton(
+                        text="💘 ᴄʜᴀɴɴᴇʟ 💘", url=f"https://t.me/{UPDATES_CHANNEL}"
+                    ),
+                ],
+                [
+                    InlineKeyboardButton(
+                        text="☁ sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ ☁",
+                        url="https://github.com/Abishnoi69/AsuXMusic",
                     )
                 ],
             ]
@@ -120,25 +124,7 @@ async def cbstart(_, query: CallbackQuery):
     )
 
 
-@Client.on_callback_query(filters.regex("cbhowtouse"))
-async def cbguides(_, query: CallbackQuery):
-    await query.edit_message_text(
-        f"""❓ **ʙᴀsɪᴄ ɢᴜɪᴅᴇ ғᴏʀ ᴜsɪɴɢ ᴛʜɪs ʙᴏᴛ:**
 
-1.) **ғɪʀsᴛ, ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ.**
-2.) **ᴛʜᴇɴ, ᴘʀᴏᴍᴏᴛᴇ ᴍᴇ ᴀs ᴀᴅᴍɪɴɪsᴛʀᴀᴛᴏʀ ᴀɴᴅ ɢɪᴠᴇ ᴀʟʟ ᴘᴇʀᴍɪssɪᴏɴs ᴇxᴄᴇᴘᴛ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ.**
-3.) **ᴀғᴛᴇʀ ᴘʀᴏᴍᴏᴛɪɴɢ ᴍᴇ, ᴛʏᴘᴇ /reload ɪɴ ɢʀᴏᴜᴘ ᴛᴏ ʀᴇғʀᴇsʜ ᴛʜᴇ ᴀᴅᴍɪɴ ᴅᴀᴛᴀ.**
-3.) **ᴀᴅᴅ  @{ASSISTANT_USERNAME} ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴏʀ ᴛʏᴘᴇ /play ᴛᴏ ɪɴᴠɪᴛᴇ ʜᴇʀ.**
-4.) **ᴛᴜʀɴ ᴏɴ ᴛʜᴇ ᴠɪᴅᴇᴏ ᴄʜᴀᴛ ғɪʀsᴛ ʙᴇғᴏʀᴇ sᴛᴀʀᴛ ᴛᴏ ᴘʟᴀʏ ᴍᴜsɪᴄ.**
-5.) **sᴏᴍᴇᴛɪᴍᴇs, ʀᴇʟᴏᴀᴅɪɴɢ ᴛʜᴇ ʙᴏᴛ ʙʏ ᴜsɪɴɢ /reload ᴄᴏᴍᴍᴀɴᴅ ᴄᴀɴ ʜᴇʟᴘ ʏᴏᴜ ᴛᴏ ғɪx sᴏᴍᴇ ᴘʀᴏʙʟᴇᴍ.**
-
-📌 **ɪғ ᴛʜᴇ ᴜsᴇʀʙᴏᴛ ɴᴏᴛ ᴊᴏɪɴᴇᴅ ᴛᴏ ᴠɪᴅᴇᴏ ᴄʜᴀᴛ, ᴍᴀᴋᴇ sᴜʀᴇ ɪғ ᴛʜᴇ ᴠɪᴅᴇᴏ ᴄʜᴀᴛ ᴀʟʀᴇᴀᴅʏ ᴛᴜʀɴᴇᴅ ᴏɴ, ᴏʀ ᴛʏᴘᴇ /play**
-
-💡 **ɪғ ʏᴏᴜ ʜᴀᴠᴇ ᴀ ғᴏʟʟᴏᴡ-ᴜᴘ ǫᴜᴇsᴛɪᴏɴs ᴀʙᴏᴜᴛ ᴛʜɪs ʙᴏᴛ, ʏᴏᴜ ᴄᴀɴ ᴛᴇʟʟ it ᴏɴ ᴍʏ sᴜᴘᴘᴏʀᴛ ᴄʜᴀᴛ ʜᴇʀᴇ: @{GROUP_SUPPORT}***""",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("🔙 Back", callback_data="cbstart")]]
-        ),
-    )
 
 
 @Client.on_callback_query(filters.regex("cbbasic"))
@@ -148,7 +134,9 @@ async def cbbasic(_, query: CallbackQuery):
 
 🤷 » /id - ᴛᴏ ɢᴇᴛ ᴜsᴇʀ ɪᴅ
 
-👩🏻‍💼 » /play - ᴛʏᴘᴇ ᴛʜɪs ᴡɪᴛʜ ɢɪᴠᴇ ᴛʜᴇ sᴏɴɢ ᴛɪᴛʟᴇ ᴏʀ ʏᴏᴜᴛᴜʙᴇ ʟɪɴᴋ ᴏʀ ᴀᴜᴅɪᴏ ғɪʟᴇ ᴛᴏ ᴘʟᴀʏ ᴍᴜsɪᴄ. (Remember to don't play YouTube live stream by using this command!, because it will cause unforeseen problems.)
+🤷 » /play - ᴛʏᴘᴇ ᴛʜɪs ᴡɪᴛʜ ɢɪᴠᴇ ᴛʜᴇ sᴏɴɢ ᴛɪᴛʟᴇ ᴏʀ ʏᴏᴜᴛᴜʙᴇ ʟɪɴᴋ ᴏʀ ᴀᴜᴅɪᴏ ғɪʟᴇ ᴛᴏ ᴘʟᴀʏ ᴍᴜsɪᴄ. (Remember to don't play YouTube live stream by using this command!, because it will cause unforeseen problems.)
+
+🤷 » /pause - ᴘᴀᴜsᴇ ᴛʜᴇ ᴄᴜʀʀᴇɴᴛ ᴘʟᴀʏᴏᴜᴛ ᴏɴ ɢʀᴏᴜᴘ ᴄᴀʟʟ
 
 🤷 » /skip - ᴛᴏ sᴋɪᴘ ᴄᴜʀʀᴇɴᴛ sᴏɴɢ
 
@@ -181,6 +169,7 @@ async def cbmenu(_, query: CallbackQuery):
         await query.answer("❌ ɴᴏᴛʜɪɴɢ ɪs ᴄᴜʀʀᴇɴᴛʟʏ sᴛʀᴇᴀᴍɪɴɢ", show_alert=True)
 
 
+        
 @Client.on_callback_query(filters.regex("cbdown"))
 async def cbdown(_, CallbackQuery):
     await CallbackQuery.answer()
@@ -194,6 +183,7 @@ async def cbdown(_, CallbackQuery):
     )
 
 
+    
 @Client.on_callback_query(filters.regex(pattern=r"song_back"))
 async def songs_back_helper(client, CallbackQuery):
     callback_data = CallbackQuery.data.strip()
@@ -204,6 +194,7 @@ async def songs_back_helper(client, CallbackQuery):
     return await CallbackQuery.edit_message_reply_markup(
         reply_markup=InlineKeyboardMarkup(buttons)
     )
+
 
 
 @Client.on_callback_query(filters.regex(pattern=r"gets"))
@@ -282,6 +273,7 @@ async def song_helper_cb(client, CallbackQuery):
         return await CallbackQuery.edit_message_reply_markup(reply_markup=keyboard)
 
 
+    
 @Client.on_callback_query(filters.regex(pattern=r"song_download"))
 async def song_download_cb(client, CallbackQuery):
     try:
