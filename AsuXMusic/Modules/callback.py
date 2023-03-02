@@ -36,39 +36,39 @@ def ytsearch(query):
 async def inline(client: Client, query: InlineQuery):
     answerss = [
         InlineQueryResultArticle(
-            title="Pause Stream",
+            title="ᴘᴀᴜsᴇ sᴛʀᴇᴀᴍ",
             description=f"ᴘᴀᴜsᴇ ᴛʜᴇ ᴄᴜʀʀᴇɴᴛ ᴘʟᴀʏᴏᴜᴛ ᴏɴ ɢʀᴏᴜᴘ ᴄᴀʟʟ.",
-            thumb_url="https://telegra.ph/file/c0a1c789def7b93f13745.png",
+            thumb_url="https://te.legra.ph/file/c0a1c789def7b93f13745.png",
             input_message_content=InputTextMessageContent("/pause"),
         ),
         InlineQueryResultArticle(
-            title="Resume Stream",
+            title="ʀᴇsᴜᴍᴇ sᴛʀᴇᴀᴍ",
             description=f"ʀᴇsᴜᴍᴇ ᴛʜᴇ ᴏɴɢᴏɪɴɢ ᴘʟᴀʏᴏᴜᴛ ᴏɴ ɢʀᴏᴜᴘ ᴄᴀʟʟ.",
-            thumb_url="https://telegra.ph/file/02d1b7f967ca11404455a.png",
+            thumb_url="https://te.legra.ph/file/02d1b7f967ca11404455a.png",
             input_message_content=InputTextMessageContent("/resume"),
         ),
         InlineQueryResultArticle(
-            title="Mute Stream",
+            title="ᴍᴜᴛᴇ sᴛʀᴇᴀᴍ",
             description=f"ᴍᴜᴛᴇ ᴛʜᴇ ᴏɴɢᴏɪɴɢ ᴘʟᴀʏᴏᴜᴛ ᴏɴ ɢʀᴏᴜᴘ ᴄᴀʟʟ.",
-            thumb_url="https://telegra.ph/file/66516f2976cb6d87e20f9.png",
+            thumb_url="https://te.legra.ph/file/66516f2976cb6d87e20f9.png",
             input_message_content=InputTextMessageContent("/mute"),
         ),
         InlineQueryResultArticle(
-            title="Unmute Stream",
+            title="ᴜɴᴍᴜᴛᴇ sᴛʀᴇᴀᴍ",
             description=f"ᴜɴᴍᴜᴛᴇ ᴛʜᴇ ᴏɴɢᴏɪɴɢ ᴘʟᴀʏᴏᴜᴛ ᴏɴ ɢʀᴏᴜᴘ ᴄᴀʟʟ.",
-            thumb_url="https://telegra.ph/file/3078794f9341ffd582e18.png",
+            thumb_url="https://te.legra.ph/file/3078794f9341ffd582e18.png",
             input_message_content=InputTextMessageContent("/unmute"),
         ),
         InlineQueryResultArticle(
-            title="Skip Stream",
+            title="sᴋɪᴘ sᴛʀᴇᴀᴍ",
             description=f"sᴋɪᴘ ᴛᴏ ɴᴇxᴛ ᴛʀᴀᴄᴋ. | ғᴏʀ sᴘᴇᴄɪғɪᴄ ᴛʀᴀᴄᴋ ɴᴜᴍʙᴇʀ: /skip [ɴᴜᴍʙᴇʀ] ",
-            thumb_url="https://telegra.ph/file/98b88e52bc625903c7a2f.png",
+            thumb_url="https://te.legra.ph/file/98b88e52bc625903c7a2f.png",
             input_message_content=InputTextMessageContent("/skip"),
         ),
         InlineQueryResultArticle(
-            title="End Stream",
+            title="ᴇɴᴅ sᴛʀᴇᴀᴍ",
             description="sᴛᴏᴘ ᴛʜᴇ ᴏɴɢᴏɪɴɢ ᴘʟᴀʏᴏᴜᴛ ᴏɴ ɢʀᴏᴜᴘ ᴄᴀʟʟ.",
-            thumb_url="https://telegra.ph/file/d2eb03211baaba8838cc4.png",
+            thumb_url="https://te.legra.ph/file/d2eb03211baaba8838cc4.png",
             input_message_content=InputTextMessageContent("/stop"),
         ),
     ]
@@ -78,7 +78,7 @@ async def inline(client: Client, query: InlineQuery):
         await client.answer_inline_query(
             query.id,
             results=answerss,
-            switch_pm_text="ᴛʏᴘᴇ ᴛʜᴇ ɴᴀᴍᴇ ᴏғ ᴛʜᴇ sᴏɴɢ/Video ʏᴏᴜᴛᴜʙᴇ...",
+            switch_pm_text="ᴛʏᴘᴇ ᴛʜᴇ ɴᴀᴍᴇ ᴏғ ᴛʜᴇ sᴏɴɢ/ᴠɪᴅᴇᴏ ʏᴏᴜᴛᴜʙᴇ...",
             switch_pm_parameter="help",
             cache_time=0,
         )
@@ -87,10 +87,10 @@ async def inline(client: Client, query: InlineQuery):
 @Client.on_callback_query(filters.regex("cbstart"))
 async def cbstart(_, query: CallbackQuery):
     await query.edit_message_text(
-        f"""ʜᴇʟʟᴏ , ᴍʏ ɴᴀᴍᴇ ɪs {BOT_NAME}.
+        f"""ʜᴇʏ ,ᴍʏ ɴᴀᴍᴇ ɪs {BOT_NAME}.
 
-๏ ᴀ ғᴀsᴛ ᴀɴᴅ ᴩᴏᴡᴇʀғᴜʟ ᴍᴜsɪᴄ ᴩʟᴀʏᴇʀ ʙᴏᴛ ᴡɪᴛʜ sᴏᴍᴇ ᴀᴡᴇsᴏᴍᴇ ғᴇᴀᴛᴜʀᴇs.
-๏ ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʜᴇʟᴩ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ᴛᴏ ɢᴇᴛ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴍʏ ᴄᴏᴍᴍᴀɴᴅs..
+*๏ ᴀ ғᴀsᴛ ᴀɴᴅ ᴩᴏᴡᴇʀғᴜʟ ᴍᴜsɪᴄ ᴩʟᴀʏᴇʀ ʙᴏᴛ ᴡɪᴛʜ sᴏᴍᴇ ᴀᴡᴇsᴏᴍᴇ ғᴇᴀᴛᴜʀᴇs.*
+*๏ ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʜᴇʟᴩ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ᴛᴏ ɢᴇᴛ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴍʏ ᴄᴏᴍᴍᴀɴᴅs*..
         """,
         reply_markup=InlineKeyboardMarkup(
             [
@@ -125,16 +125,16 @@ async def cbguides(_, query: CallbackQuery):
     await query.edit_message_text(
         f"""❓ **ʙᴀsɪᴄ ɢᴜɪᴅᴇ ғᴏʀ ᴜsɪɴɢ ᴛʜɪs ʙᴏᴛ:**
 
-1.) **First, add me to your group.**
-2.) **Then, promote me as administrator and give all permissions except Anonymous Admin.**
-3.) **After promoting me, type /reload in group to refresh the admin data.**
-3.) **Add @{ASSISTANT_USERNAME} to your group or type /userbotjoin to invite her.**
-4.) **Turn on the video chat first before start to play video/music.**
-5.) **Sometimes, reloading the bot by using /reload command can help you to fix some problem.**
+1.) **ғɪʀsᴛ, ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ.**
+2.) **ᴛʜᴇɴ, ᴘʀᴏᴍᴏᴛᴇ ᴍᴇ ᴀs ᴀᴅᴍɪɴɪsᴛʀᴀᴛᴏʀ ᴀɴᴅ ɢɪᴠᴇ ᴀʟʟ ᴘᴇʀᴍɪssɪᴏɴs ᴇxᴄᴇᴘᴛ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ.**
+3.) **ᴀғᴛᴇʀ ᴘʀᴏᴍᴏᴛɪɴɢ ᴍᴇ, ᴛʏᴘᴇ /reload ɪɴ ɢʀᴏᴜᴘ ᴛᴏ ʀᴇғʀᴇsʜ ᴛʜᴇ ᴀᴅᴍɪɴ ᴅᴀᴛᴀ.**
+3.) **ᴀᴅᴅ  @{ASSISTANT_USERNAME} ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴏʀ ᴛʏᴘᴇ /play ᴛᴏ ɪɴᴠɪᴛᴇ ʜᴇʀ.**
+4.) **ᴛᴜʀɴ ᴏɴ ᴛʜᴇ ᴠɪᴅᴇᴏ ᴄʜᴀᴛ ғɪʀsᴛ ʙᴇғᴏʀᴇ sᴛᴀʀᴛ ᴛᴏ ᴘʟᴀʏ ᴍᴜsɪᴄ.**
+5.) **sᴏᴍᴇᴛɪᴍᴇs, ʀᴇʟᴏᴀᴅɪɴɢ ᴛʜᴇ ʙᴏᴛ ʙʏ ᴜsɪɴɢ /reload ᴄᴏᴍᴍᴀɴᴅ ᴄᴀɴ ʜᴇʟᴘ ʏᴏᴜ ᴛᴏ ғɪx sᴏᴍᴇ ᴘʀᴏʙʟᴇᴍ.**
 
-📌 **If the userbot not joined to video chat, make sure if the video chat already turned on, or type /userbotleave then type /userbotjoin again.**
+📌 **ɪғ ᴛʜᴇ ᴜsᴇʀʙᴏᴛ ɴᴏᴛ ᴊᴏɪɴᴇᴅ ᴛᴏ ᴠɪᴅᴇᴏ ᴄʜᴀᴛ, ᴍᴀᴋᴇ sᴜʀᴇ ɪғ ᴛʜᴇ ᴠɪᴅᴇᴏ ᴄʜᴀᴛ ᴀʟʀᴇᴀᴅʏ ᴛᴜʀɴᴇᴅ ᴏɴ, ᴏʀ ᴛʏᴘᴇ /play**
 
-💡 **If you have a follow-up questions about this bot, you can tell it on my support chat here: @{GROUP_SUPPORT}***""",
+💡 **ɪғ ʏᴏᴜ ʜᴀᴠᴇ ᴀ ғᴏʟʟᴏᴡ-ᴜᴘ ǫᴜᴇsᴛɪᴏɴs ᴀʙᴏᴜᴛ ᴛʜɪs ʙᴏᴛ, ʏᴏᴜ ᴄᴀɴ ᴛᴇʟʟ it ᴏɴ ᴍʏ sᴜᴘᴘᴏʀᴛ ᴄʜᴀᴛ ʜᴇʀᴇ: @{GROUP_SUPPORT}***""",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("🔙 Back", callback_data="cbstart")]]
         ),
