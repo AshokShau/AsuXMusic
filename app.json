@@ -1,6 +1,6 @@
 {
   "name": "ᴀsᴜx ᴍᴜsɪᴄ",
-  "logo": "https://te.legra.ph/file/89cbc8b8760b6abff430f.jpg",
+  "logo": "https://te.legra.ph/file/89762ac8329b6ce5c9e52.jpg",
   "description": "A Fast & Powerful VC Player bot to play songs in Telegram Video Chat written in Python with the help of Pyrogram & PyTg-Calls.",
   "keywords": ["music", "voicechat", "python", "telegram-bot", "pyrogram", "telegram", "AsuX"],
   "repository": "https://github.com/Abishnoi69/AsuXMusic",
@@ -9,6 +9,11 @@
     "BOT_TOKEN": {
       "description": "ᴀ ʙᴏᴛ ᴛᴏᴋᴇɴ ғʀᴏᴍ @Botfather",
       "value": "",
+      "required": true
+    },
+    "OWNER_ID": {
+      "description": "ᴛᴇʟᴇɢʀᴀᴍ ɪᴅ ᴏғ ᴛʜᴇ ᴘᴇʀsᴏɴ ᴡʜᴏ ᴡɪʟʟ ᴋɴᴏᴡɴ ᴀs ᴏᴡɴᴇʀ ᴏғ ᴛʜᴇ ʙᴏᴛ.",
+      "value": "5938660179",
       "required": true
     },
     "SESSION_NAME": {
