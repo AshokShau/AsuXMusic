@@ -12,7 +12,7 @@ from youtubesearchpython import VideosSearch
 
 from AsuX.inline import menu_markup, song_download_markup, stream_markup
 from AsuX.queues import QUEUE
-from AsuXMusic import ASSISTANT_USERNAME, BOT_NAME, BOT_USERNAME, F_OWNER
+from AsuXMusic import BOT_NAME, BOT_USERNAME, F_OWNER
 from AsuXMusic import bot as Client
 from AsuXMusic.config import GROUP_SUPPORT, UPDATES_CHANNEL
 
@@ -124,9 +124,6 @@ async def cbstart(_, query: CallbackQuery):
     )
 
 
-
-
-
 @Client.on_callback_query(filters.regex("cbbasic"))
 async def cbbasic(_, query: CallbackQuery):
     await query.edit_message_text(
@@ -169,7 +166,6 @@ async def cbmenu(_, query: CallbackQuery):
         await query.answer("❌ ɴᴏᴛʜɪɴɢ ɪs ᴄᴜʀʀᴇɴᴛʟʏ sᴛʀᴇᴀᴍɪɴɢ", show_alert=True)
 
 
-        
 @Client.on_callback_query(filters.regex("cbdown"))
 async def cbdown(_, CallbackQuery):
     await CallbackQuery.answer()
@@ -183,7 +179,6 @@ async def cbdown(_, CallbackQuery):
     )
 
 
-    
 @Client.on_callback_query(filters.regex(pattern=r"song_back"))
 async def songs_back_helper(client, CallbackQuery):
     callback_data = CallbackQuery.data.strip()
@@ -194,7 +189,6 @@ async def songs_back_helper(client, CallbackQuery):
     return await CallbackQuery.edit_message_reply_markup(
         reply_markup=InlineKeyboardMarkup(buttons)
     )
-
 
 
 @Client.on_callback_query(filters.regex(pattern=r"gets"))
@@ -273,7 +267,6 @@ async def song_helper_cb(client, CallbackQuery):
         return await CallbackQuery.edit_message_reply_markup(reply_markup=keyboard)
 
 
-    
 @Client.on_callback_query(filters.regex(pattern=r"song_download"))
 async def song_download_cb(client, CallbackQuery):
     try:
