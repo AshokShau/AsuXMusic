@@ -56,6 +56,9 @@ async def start(client: Abishnoi, message: Message):
     )
 
 
+    
+    
+    
 @Abishnoi.on_message(command(["start", "help"]) & ~filters.group)
 async def start(_, message: Message):
     await message.reply_text(
@@ -65,31 +68,37 @@ async def start(_, message: Message):
 ๏ ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʜᴇʟᴩ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ᴛᴏ ɢᴇᴛ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴍʏ ᴄᴏᴍᴍᴀɴᴅs..
         """,
         reply_markup=InlineKeyboardMarkup(
+        [
             [
-                [
-                    InlineKeyboardButton("ᴄᴏᴍᴍᴀɴᴅs ❔", callback_data="cbbasic"),
-                ],
-                [
-                    InlineKeyboardButton("ʜᴏᴡ ᴛᴏ ᴜsᴇ ᴍᴇ ❓", callback_data="cbhowtouse"),
-                ],
-                [
-                    InlineKeyboardButton(
-                        "ᴜᴘᴅᴀᴛᴇs", url=f"https://t.me/{UPDATES_CHANNEL}"
-                    ),
-                    InlineKeyboardButton(
-                        "sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{GROUP_SUPPORT}"
-                    ),
-                ],
-                [
-                    InlineKeyboardButton(
-                        "➕ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ᴄʜᴀᴛ ➕",
-                        url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
-                    )
-                ],
-            ]
-        ),
+                InlineKeyboardButton(
+                    text="ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴩ", url=f"https://t.me/{BOT_USERNAME}?startgroup=true"
+                ),
+            ],
+            [
+                InlineKeyboardButton(
+                    text="❄ ʜᴇʟᴩ ❄", callback_data="cbbasic"
+                ),
+                InlineKeyboardButton(
+                    text="🥀 ᴏᴡɴᴇʀ 🥀", user_id=F_OWNER
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    text="✨ sᴜᴩᴩᴏʀᴛ ✨", url=f"https://t.me/{GROUP_SUPPORT}"
+                ),
+                InlineKeyboardButton(
+                    text="💘 ᴄʜᴀɴɴᴇʟ 💘", url=f"https://t.me/{UPDATES_CHANNEL}"
+                ),
+            ],
+            [
+                InlineKeyboardButton(
+                    text="☁ sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ ☁", url="https://github.com/Abishnoi69/AsuXMusic"
+                )
+            ],
+        ]
+    ),
         disable_web_page_preview=True,
-    )
+)
 
 
 @Abishnoi.on_message(command(["repo", "source"]))
