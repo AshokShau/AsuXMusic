@@ -4,7 +4,7 @@ from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 from AsuX import command
-from AsuXMusic import BOT_NAME, BOT_USERNAME
+from AsuXMusic import BOT_NAME, BOT_USERNAME, F_OWNER
 from AsuXMusic import bot as Abishnoi
 from AsuXMusic.config import GROUP_SUPPORT, UPDATES_CHANNEL
 
@@ -31,7 +31,7 @@ async def _human_time_duration(seconds):
 
 
 @Abishnoi.on_message(
-    command(["start", f"start@{BOT_USERNAME}", "ping"])
+    filters.command(["start", f"start@{BOT_USERNAME}", "ping"])
     & filters.group
     & ~filters.edited
 )
@@ -56,7 +56,7 @@ async def start(client: Abishnoi, message: Message):
     )
 
 
-@Abishnoi.on_message(command(["start", "help"]) & ~filters.group)
+@Abishnoi.on_message(filters.command(["start", "help"]) & ~filters.group)
 async def start(_, message: Message):
     await message.reply_text(
         f"""ʜᴇʏ {message.from_user.mention()}, 
@@ -96,7 +96,7 @@ async def start(_, message: Message):
     )
 
 
-@Abishnoi.on_message(command(["repo", "source"]))
+@Abishnoi.on_message(filters.command(["repo", "source"]))
 async def help(client: Abishnoi, message: Message):
     await message.reply_photo(
         photo=f"https://te.legra.ph/file/56557bd94afbe895ae483.jpg",
