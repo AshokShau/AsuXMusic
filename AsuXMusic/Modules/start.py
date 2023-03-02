@@ -59,7 +59,8 @@ async def start(client: Abishnoi, message: Message):
 async def start(_, message: Message):
     await message.reply_text(
         f"""ʜᴇʏ {message.from_user.mention()}, 
-               ᴍʏ ɴᴀᴍᴇ ɪs {BOT_NAME}.
+       
+     ᴍʏ ɴᴀᴍᴇ ɪs {BOT_NAME}.
 ๏ ᴀ ғᴀsᴛ ᴀɴᴅ ᴩᴏᴡᴇʀғᴜʟ ᴍᴜsɪᴄ ᴩʟᴀʏᴇʀ ʙᴏᴛ ᴡɪᴛʜ sᴏᴍᴇ ᴀᴡᴇsᴏᴍᴇ ғᴇᴀᴛᴜʀᴇs.
 ๏ ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʜᴇʟᴩ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ᴛᴏ ɢᴇᴛ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴍʏ ᴄᴏᴍᴍᴀɴᴅs..
         """,
