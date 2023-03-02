@@ -14,7 +14,7 @@ from AsuX.utils import skip_current_song, skip_item
 from AsuXMusic import BOT_USERNAME
 from AsuXMusic import bot as Abishnoi
 from AsuXMusic import call_py
-from AsuXMusic.config import IMG_3, IMG_5
+from AsuXMusic.config import IMG_3, IMG_5, GROUP_SUPPORT as AbishnoiMF
 
 bttn = InlineKeyboardMarkup(
     [[InlineKeyboardButton("🔙 ɢᴏ ʙᴀᴄᴋ", callback_data="cbmenu")]]
@@ -268,7 +268,7 @@ async def cbmute(_, query: CallbackQuery):
         try:
             await call_py.mute_stream(chat_id)
             await query.edit_message_text(
-                "🔇 Userbot Succesfully Muted", reply_markup=bttn
+                "🔇 ᴜsᴇʀʙᴏᴛ sᴜᴄᴄᴇsғᴜʟʟʏ ᴍᴜᴛᴇᴅ", reply_markup=bttn
             )
         except Exception as e:
             await query.edit_message_text(f"🚫 **ᴇʀʀᴏʀ:**\n\n`{e}`", reply_markup=bcl)
@@ -356,6 +356,6 @@ async def cbskip(_, query: CallbackQuery):
             chat_id,
             photo=image,
             reply_markup=InlineKeyboardMarkup(buttons),
-            caption=f"⏭ **sᴋɪᴘᴘᴇᴅ** ᴛᴏ ᴛʜᴇ ɴᴇxᴛ ᴛʀᴀᴄᴋ.\n\n🗂 **ɴᴀᴍᴇ:** [{queue[0]}]({queue[1]})\n💭 **ᴄʜᴀᴛ:** `{chat_id}`\n🧸 **Request by:** {requester}",
+            caption=f"⏭ **sᴋɪᴘᴘᴇᴅ** ᴛᴏ ᴛʜᴇ ɴᴇxᴛ ᴛʀᴀᴄᴋ.\n\n🗂 **ɴᴀᴍᴇ:** [{queue[0]}]({queue[1]})\n💭 **ᴄʜᴀᴛ:** `{chat_id}`\n🧸 **ʀᴇǫᴜᴇsᴛ ʙʏ:** {requester}",
         )
         remove_if_exists(image)
