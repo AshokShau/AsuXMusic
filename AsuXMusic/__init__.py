@@ -1,7 +1,7 @@
 from pyrogram import Client
 from pytgcalls import PyTgCalls, idle
 
-from AsuXMusic.config import API_HASH, API_ID, BOT_TOKEN, SESSION_NAME
+from AsuXMusic.config import API_HASH, API_ID, BOT_TOKEN, SESSION_NAME, OWNER_ID
 from AsuXMusic.Modules import ALL_MODULES
 
 bot = Client(
@@ -26,6 +26,7 @@ user = PyTgCalls(
 call_py = PyTgCalls(Abishnoi, overload_quiet_mode=True)
 
 OWNER_NAME = "Abishnoi1M"
+F_OWNER = OWNER_ID[0]
 
 with Client("AsuXMusic", API_ID, API_HASH, bot_token=BOT_TOKEN) as app:
     x = app.get_me()
