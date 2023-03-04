@@ -1,5 +1,5 @@
-
 from pyrogram import filters
+
 from AsuXMusic import bot
 
 
@@ -30,10 +30,12 @@ async def getid(client, message):
 
     text += f"**[ᴄʜᴀᴛ ɪᴅ:](https://t.me/{chat.username})** `{chat.id}`\n\n"
 
-    if not getattr(reply, "empty", True) and not message.forward_from_chat and not reply.sender_chat:
-        text += (
-            f"**[ʀᴇᴘʟɪᴇᴅ ᴍᴇssᴀɢᴇ ɪᴅ:]({reply.link})** `{reply.message_id}`\n"
-        )
+    if (
+        not getattr(reply, "empty", True)
+        and not message.forward_from_chat
+        and not reply.sender_chat
+    ):
+        text += f"**[ʀᴇᴘʟɪᴇᴅ ᴍᴇssᴀɢᴇ ɪᴅ:]({reply.link})** `{reply.message_id}`\n"
         text += f"**[ʀᴇᴘʟɪᴇᴅ ᴜsᴇʀ ɪᴅ:](tg://user?id={reply.from_user.id})** `{reply.from_user.id}`\n\n"
 
     if reply and reply.forward_from_chat:
@@ -45,7 +47,7 @@ async def getid(client, message):
         print(reply.sender_chat)
 
     await message.reply_text(
-       text,
-       disable_web_page_preview=True,
-       parse_mode="md",
-   )   
+        text,
+        disable_web_page_preview=True,
+        parse_mode="md",
+    )
