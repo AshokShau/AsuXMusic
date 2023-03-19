@@ -30,7 +30,7 @@ async def _human_time_duration(seconds):
 
 
 @Abishnoi.on_message(
-    filters.command(["start", f"start@{BOT_USERNAME}", "ping"]) & filters.group
+    filters.command([f"ping@{BOT_USERNAME}", "ping"]) & filters.group
 )
 async def start(client: Abishnoi, message: Message):
     current_time = datetime.utcnow()
