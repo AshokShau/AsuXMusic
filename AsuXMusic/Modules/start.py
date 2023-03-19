@@ -29,9 +29,7 @@ async def _human_time_duration(seconds):
     return ", ".join(parts)
 
 
-@Abishnoi.on_message(
-    filters.command([f"ping@{BOT_USERNAME}", "ping"]) & filters.group
-)
+@Abishnoi.on_message(filters.command([f"ping@{BOT_USERNAME}", "ping"]) & filters.group)
 async def start(client: Abishnoi, message: Message):
     current_time = datetime.utcnow()
     uptime_sec = (current_time - START_TIME).total_seconds()
