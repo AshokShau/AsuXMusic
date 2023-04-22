@@ -1,9 +1,10 @@
+import logging
+
 from pyrogram import Client
 from pytgcalls import PyTgCalls, idle
-import logging
+
 from AsuXMusic.config import API_HASH, API_ID, BOT_TOKEN, OWNER_ID, SESSION_NAME
 from AsuXMusic.Modules import ALL_MODULES
-
 
 logging.basicConfig(
     format="[%(asctime)s - %(levelname)s] - %(name)s - %(message)s",
@@ -13,7 +14,6 @@ logging.basicConfig(
 )
 logging.getLogger("pyrogram").setLevel(logging.ERROR)
 LOGGER = logging.getLogger(__name__)
-
 
 
 bot = Client(
