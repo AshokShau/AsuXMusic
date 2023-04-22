@@ -69,10 +69,10 @@ async def play(c: Abishnoi, m: Message):
         )
         return
     # if not a.can_manage_voice_chats:
-     #   await m.reply_text(
+    #   await m.reply_text(
     #        "ᴍɪssɪɴɢ ʀᴇǫᴜɪʀᴇᴅ ᴘᴇʀᴍɪssɪᴏɴ:" + "\n\n» ❌ __ᴍᴀɴᴀɢᴇ ᴠɪᴅᴇᴏ ᴄʜᴀᴛ__"
-   #     )
-   #     return
+    #     )
+    #     return
     if not a.can_invite_users:
         await m.reply_text("ᴍɪssɪɴɢ ʀᴇǫᴜɪʀᴇᴅ ᴘᴇʀᴍɪssɪᴏɴ:" + "\n\n» ❌ __ɪɴᴠɪᴛᴇ ᴜsᴇʀ__")
         return
