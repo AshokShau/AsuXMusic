@@ -12,7 +12,9 @@ loop = asyncio.get_event_loop()
 async def AsuX_boot():
     for all_module in ALL_MODULES:
         importlib.import_module("AsuXMusic.Modules." + all_module)
+    print(f"@{BOT_USERNAME} is ready to run ")
     await bot.start()
+    print("assistant started ")
     await call_py.start()
     await idle()
     print(f"ɢᴏᴏᴅʙʏᴇ!\nStopping @{BOT_USERNAME}")
